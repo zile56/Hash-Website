@@ -65,6 +65,7 @@
 .foot__metric-val-wrap {
   display: flex;
   align-items: flex-start;
+  width: fit-content;
 }
 
 .foot__metric-val {
