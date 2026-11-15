@@ -12,9 +12,6 @@ import { Resend } from "resend";
  * - CONTACT_TO_EMAIL: Destination inbox for lead routing (e.g. "contact@hash.engineering")
  */
 
-const FROM = process.env.CONTACT_FROM_EMAIL || "Hash Engineering <contact@hash.engineering>";
-const TO = process.env.CONTACT_TO_EMAIL || "contact@hash.engineering";
-
 /**
  * Best-effort IP rate limiting. Prevents spam floods while preserving zero latency.
  */
@@ -61,7 +58,11 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(204).end();
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed." });
 
-  if (!process.env.RESEND_API_KEY) {
+  const resendApiKey = process.env.RESEND_API_KEY;
+  const fromEmail = process.env.CONTACT_FROM_EMAIL || "Hash Engineering <contact@hash.engineering>";
+  const toEmail = process.env.CONTACT_TO_EMAIL || "contact@hash.engineering";
+
+  if (!resendApiKey) {
     console.error("[Hash API] RESEND_API_KEY is not configured on this deployment.");
     return res.status(500).json({
       error: "Email service is not configured yet. Please reach out to contact@hash.engineering directly.",
@@ -124,7 +125,7 @@ export default async function handler(req, res) {
   }
 
   const receiptId = `HASH-INQ-${Math.floor(1000 + Math.random() * 9000)}`;
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const resend = new Resend(resendApiKey);
 
   const pillarsText = pillars.map((p) => `• ${p}`).join("\n");
   const pillarsHtml = pillars
@@ -136,8 +137,8 @@ export default async function handler(req, res) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: FROM,
-      to: [TO],
+      from: fromEmail,
+      to: [toEmail],
       replyTo: email,
       subject: `[${receiptId}] Technical Discovery Brief — ${tier} — ${name}`,
       text: [

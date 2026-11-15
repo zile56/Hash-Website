@@ -10,11 +10,11 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const distDir = join(root, "dist");
+const distDir = join(root, "dist", "client");
 
 // pathToFileURL, not a bare path — Windows drive letters are not a valid ESM scheme.
 const { render, allPaths, metaForPath, jsonLdForPath, SITE_URL } = await import(
-  pathToFileURL(join(root, "dist-ssr", "entry-server.js")).href
+  pathToFileURL(join(root, "dist", "server", "entry-server.js")).href
 );
 
 const template = await readFile(join(distDir, "index.html"), "utf8");
