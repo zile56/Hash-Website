@@ -4,6 +4,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageContainer from "./components/PageContainer";
+import ScrollTop from "./components/ScrollTop";
 import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";
 import { metaForPath } from "./seo";
@@ -54,6 +55,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <ScrollTop />
       </PageContainer>
     </MotionConfig>
   );

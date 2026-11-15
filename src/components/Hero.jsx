@@ -84,7 +84,6 @@ export default function Hero() {
                 transition={{ duration: 0.45, delay: 0.15 + idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="matrix-top mono">
-                  <span className="matrix-num">{item.num} //</span>
                   <span className="matrix-tag">{item.tag}</span>
                 </div>
 

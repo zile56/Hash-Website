@@ -39,7 +39,7 @@ export default function Manifesto() {
         {/* Section Header */}
         <div className="manifesto-header">
           <div className="eyebrow manifesto-eyebrow">
-            01 // THE ENGINEERING MANIFESTO
+            THE ENGINEERING MANIFESTO
           </div>
           <div className="manifesto-meta mono">
             <span>DISCIPLINE OVER SPECULATION</span>

@@ -16,7 +16,7 @@ const STAGES = [
     id: "ingest",
     step: "01",
     name: "Unified Ingestion Plane",
-    shortName: "01 / Ingest",
+    shortName: "Ingest",
     icon: FiActivity,
     role: "High-Throughput Ingestion & Event Streaming",
     summary:
@@ -40,7 +40,7 @@ const STAGES = [
     id: "refine",
     step: "02",
     name: "Medallion Refinement Engine",
-    shortName: "02 / Refine",
+    shortName: "Refine",
     icon: FiDatabase,
     role: "Bronze-to-Silver ETL & SCD Type 2 Dimensional Modeling",
     summary:
@@ -64,7 +64,7 @@ const STAGES = [
     id: "serve",
     step: "03",
     name: "Semantic & Vector Acceleration",
-    shortName: "03 / Serve",
+    shortName: "Serve",
     icon: FiLayers,
     role: "Gold Analytical Marts & Sub-15ms Vector Retrieval",
     summary:
@@ -88,7 +88,7 @@ const STAGES = [
     id: "govern",
     step: "04",
     name: "Agentic Loop & Governance Plane",
-    shortName: "04 / Govern",
+    shortName: "Govern",
     icon: FiShield,
     role: "Autonomous Agent Orchestration & Deterministic QA",
     summary:
@@ -121,7 +121,7 @@ export default function ArchitectureBlueprint() {
         <div className="blueprint-head">
           <div>
             <div className="eyebrow blueprint-eyebrow">
-              02 // PLATFORM ARCHITECTURE BLUEPRINT
+              PLATFORM ARCHITECTURE BLUEPRINT
             </div>
             <h2 className="display h2 blueprint-title editorial-gradient-heading">
               The Sovereign Data &amp; AI Platform Architecture.
@@ -197,7 +197,7 @@ export default function ArchitectureBlueprint() {
                   className="inspector-content"
                 >
                   <div className="inspector-badge mono">
-                    STAGE {activeStage.step} // {activeStage.role}
+                    {activeStage.role}
                   </div>
 
                   <h3 className="inspector-title">{activeStage.name}</h3>

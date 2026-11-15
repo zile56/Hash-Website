@@ -186,7 +186,7 @@ export default function Engagement() {
         {/* Section Header */}
         <div className="section-head">
           <div className="eyebrow">
-            05 // PARTNERSHIP FRAMEWORKS
+            PARTNERSHIP FRAMEWORKS
           </div>
           <div className="section-head-grid">
             <h2 className="display h2 section-title editorial-gradient-heading">
@@ -224,7 +224,6 @@ export default function Engagement() {
               >
                 <div className="tier-header">
                   <div className="tier-meta mono">
-                    <span className="tier-num">{tier.index}</span>
                     <span className="tier-duration">{tier.timeline}</span>
                   </div>
                   <div className="tier-icon-wrap" aria-hidden="true">
@@ -281,7 +280,7 @@ export default function Engagement() {
           <div className="inquiry-panel" id="contact">
             <div className="inquiry-header">
               <div className="eyebrow">
-                06 // CONFIGURE TECHNICAL SCOPE
+                CONFIGURE TECHNICAL SCOPE
               </div>
               <h3 className="inquiry-title">Interactive Engagement Scope Builder</h3>
               <p className="inquiry-subtitle">
@@ -344,7 +343,7 @@ export default function Engagement() {
 
                 {/* Step 1: 11 Selectable Services Chips */}
                 <div className="form-section">
-                  <label className="form-label mono">01 // SELECT SERVICES (11 AVAILABLE OFFERINGS)</label>
+                  <label className="form-label mono">SELECT SERVICES (11 AVAILABLE OFFERINGS)</label>
                   <div className="practice-pills" role="group" aria-label="11 Selectable Service Offerings">
                     {ALL_SERVICES.map((area) => {
                       const active = selectedPractices.includes(area);
@@ -366,7 +365,7 @@ export default function Engagement() {
 
                 {/* Step 2: Selected Engagement Tier Tag */}
                 <div className="form-section">
-                  <label className="form-label mono">02 // ACTIVE ENGAGEMENT MODEL</label>
+                  <label className="form-label mono">ACTIVE ENGAGEMENT MODEL</label>
                   <div className="tier-selector-pills" role="radiogroup" aria-label="Active Engagement Model">
                     {TIERS.map((tier) => {
                       const isTierActive = selectedTier === tier.id;
@@ -397,7 +396,7 @@ export default function Engagement() {
 
                 {/* Step 3: Contact & Scope Inputs */}
                 <div className="form-section">
-                  <label className="form-label mono">03 // PROJECT PARAMETERS &amp; CONTACT</label>
+                  <label className="form-label mono">PROJECT PARAMETERS &amp; CONTACT</label>
                   <div className="form-grid">
                     <div className="form-group">
                       <label className="input-label" htmlFor="client-name">

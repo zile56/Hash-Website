@@ -13,7 +13,7 @@ const CASE_STUDIES = [
       "Full-duplex WebSocket audio pipeline pairing Deepgram Nova-2 with strict JSON Schema tool calling into secure EHR endpoints.",
     stack: ["Python", "FastAPI", "Deepgram Nova-2", "Llama-3", "PostgreSQL", "Twilio SIP"],
     metrics: [
-      { value: "-74%", label: "Manual Call Handling", note: "Routine triage fully automated" },
+      { value: "-74%", label: "Manual Call Handling", note: "Routine triage automated" },
       { value: "0", label: "Schema Hallucinations", note: "1.2M+ production evaluations" },
       { value: "<620ms", label: "p95 Voice Latency", note: "Turnaround response time" },
     ],
@@ -59,7 +59,7 @@ export default function CaseStudies() {
         {/* Section Header */}
         <div className="section-head">
           <div className="eyebrow casestudies-eyebrow">
-            04 // PROVEN ARCHITECTURAL IMPACT
+            PROVEN ARCHITECTURAL IMPACT
           </div>
           <div className="section-head-grid">
             <h2 className="display h2 section-title editorial-gradient-heading">
@@ -71,31 +71,28 @@ export default function CaseStudies() {
           </div>
         </div>
 
-        {/* Clean 1px Ink-Hairline Case Study Rows */}
-        <div className="casestudies-rows">
+        {/* Clean Editorial Card Containers with Generous Breathing Room */}
+        <div className="casestudies-cards">
           {CASE_STUDIES.map((study, idx) => (
             <motion.article
               key={study.id}
-              className="casestudy-row"
+              className="casestudy-card"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Row Header: Meta in Muted Slate */}
-              <div className="study-row-header">
-                <div className="study-row-meta mono">
-                  <span className="study-num">CASE {study.id} //</span>
-                  <span className="study-tag">{study.tag}</span>
-                </div>
-                <div className="study-client mono">{study.clientType}</div>
+              {/* Row Header: Clean Tag in Muted Slate (No Noisy '01 //' Prefixes) */}
+              <div className="study-card-header">
+                <span className="study-tag mono">{study.tag}</span>
+                <span className="study-client mono">{study.clientType}</span>
               </div>
 
               {/* Title & Oversized Metrics Grid */}
               <div className="study-hero-grid">
                 <h3 className="study-row-title">{study.title}</h3>
 
-                {/* Oversized Space Grotesk Metrics in #111113 */}
+                {/* KPI Metrics Box with Generous Padding */}
                 <div className="study-metrics-strip">
                   {study.metrics.map((m, mIdx) => (
                     <div key={mIdx} className="study-metric-item">
@@ -107,7 +104,7 @@ export default function CaseStudies() {
                 </div>
               </div>
 
-              {/* Technical Detail Columns */}
+              {/* Technical Detail Columns with Generous Separation */}
               <div className="study-details-grid">
                 <div className="study-detail-col">
                   <span className="detail-tag mono">CHALLENGE &amp; CONTEXT</span>
@@ -120,7 +117,7 @@ export default function CaseStudies() {
                 </div>
               </div>
 
-              {/* Technology Stack Footnote */}
+              {/* Deployed Stack Tags as Individual Inline-Flex Pills */}
               <div className="study-stack-row">
                 <span className="stack-row-tag mono">DEPLOYED STACK:</span>
                 <div className="study-tech-tags">

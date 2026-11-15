@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Case Studies — Architectural 1px Ink-Hairline Rows
-   Oversized #111113 Space Grotesk metrics, zero heavy rounded cards, zero orange bleed
+   Case Studies — Editorial Card Containers
+   Oversized #111113 Space Grotesk metrics, clean tech pills, zero border crowding
    ========================================================================== */
 
 .casestudies-section {
@@ -13,28 +13,35 @@
   color: var(--text-secondary);
 }
 
-.casestudies-rows {
+.casestudies-cards {
   display: flex;
   flex-direction: column;
+  gap: clamp(24px, 3.5vw, 32px);
   width: 100%;
-  border-top: 1px solid var(--border-default);
 }
 
-.casestudy-row {
+/* ------------------------------------------------------------- card container -- */
+
+.casestudy-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-block: clamp(36px, 5vw, 56px);
-  border-bottom: 1px solid var(--border-default);
-  transition: background 0.2s var(--ease);
+  padding: clamp(24px, 4vw, 36px);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg, 12px);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
-.casestudy-row:hover {
-  background: rgba(255, 255, 255, 0.4);
+.casestudy-card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--border-strong);
+  box-shadow: 0 16px 36px -8px rgba(17, 17, 19, 0.08);
 }
 
-/* Row Header: Meta in Muted Slate */
-.study-row-header {
+/* Card Header: Clean Tags without Noisy '01 //' Prefixes */
+.study-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,23 +50,12 @@
   gap: 12px;
 }
 
-.study-row-meta {
+.study-tag {
   font-size: 0.6875rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.study-num {
   font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.study-tag {
-  color: var(--text-secondary);
 }
 
 .study-client {
@@ -72,28 +68,28 @@
 .study-hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 56px);
-  align-items: start;
-  margin-bottom: clamp(28px, 4vw, 40px);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  margin-bottom: 28px;
 }
 
 .study-row-title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.6vw, 2.35rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
   font-weight: 600;
   letter-spacing: -0.025em;
-  line-height: 1.16;
+  line-height: 1.18;
   color: var(--text-primary);
   max-width: 24ch;
 }
 
-/* Oversized Space Grotesk Metrics in #111113 (Deep Editorial Ink) */
+/* KPI Metric Box: Generous 20px 24px Padding */
 .study-metrics-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 2.5vw, 28px);
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.55);
+  gap: clamp(16px, 2vw, 24px);
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.75);
   border: 1px solid var(--border-default);
   border-radius: var(--radius);
 }
@@ -105,7 +101,7 @@
 
 .study-metric-val {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 2.6vw, 2.45rem);
+  font-size: clamp(1.6rem, 2.4vw, 2.15rem);
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.03em;
@@ -116,11 +112,11 @@
 
 .study-metric-lbl {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .study-metric-note {
@@ -129,23 +125,23 @@
   line-height: 1.35;
 }
 
-/* Challenge & Deployed Architecture (Clean Unboxed Grid) */
-.study-breakdown-grid {
+/* Challenge & Deployed Architecture Grid */
+.study-details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(24px, 4vw, 48px);
   padding-bottom: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.study-breakdown-col {
+.study-detail-col {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.breakdown-tag {
+.detail-tag {
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -153,7 +149,7 @@
   color: var(--text-secondary);
 }
 
-.breakdown-body {
+.detail-body {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   line-height: 1.6;
@@ -161,34 +157,46 @@
   margin: 0;
 }
 
-/* Stack Chips Row */
+/* ---------------------------------------------------------- deployed stack -- */
+
 .study-stack-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
-.stack-label {
+.stack-row-tag {
   font-size: 0.6875rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  font-weight: 600;
   color: var(--text-secondary);
 }
 
-.stack-chips-list {
+.study-tech-tags {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
-.hairline-chip {
-  padding: 4px 8px;
-  font-size: 0.6875rem;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-default);
+.study-tech-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  border: 1px solid rgba(17, 17, 19, 0.16);
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-mono);
+  transition: all 0.2s var(--ease);
+}
+
+.study-tech-tag:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(230, 72, 30, 0.05);
 }
 
 /* ------------------------------------------------------------- responsive -- */
@@ -199,15 +207,20 @@
     gap: 24px;
   }
 
-  .study-breakdown-grid {
+  .study-details-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 }
 
 @media (max-width: 640px) {
+  .casestudy-card {
+    padding: 20px 16px;
+  }
+
   .study-metrics-strip {
     grid-template-columns: 1fr;
     gap: 16px;
+    padding: 16px 18px;
   }
 }

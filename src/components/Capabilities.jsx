@@ -17,7 +17,7 @@ export default function Capabilities() {
         {/* Section Header */}
         <div className="section-head">
           <div className="eyebrow capabilities-eyebrow">
-            03 // 11 CORE ENGINEERING SERVICES
+            11 CORE ENGINEERING SERVICES
           </div>
           <div className="section-head-grid">
             <h2 className="display h2 section-title editorial-gradient-heading">
@@ -33,11 +33,10 @@ export default function Capabilities() {
         <div className="pillars-container">
           {SERVICE_PILLARS.map((pillar) => (
             <div key={pillar.pillarId} className="pillar-block">
-              {/* Pillar Header */}
+              {/* Pillar Header (Clean Title without Noisy Prefixes) */}
               <div className="pillar-header">
                 <div className="pillar-badge mono">
-                  <span className="pillar-num">{pillar.pillarNum} //</span>
-                  <span className="pillar-name">{pillar.pillarTitle.toUpperCase()}</span>
+                  <span className="pillar-name">{pillar.pillarTitle}</span>
                 </div>
                 <div className="pillar-tagline mono">{pillar.tagline}</div>
               </div>
