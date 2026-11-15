@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FiCheck, FiArrowUpRight, FiLayers, FiUsers, FiBox, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
-import { CALENDLY, EMAIL } from "../site";
+import { CALENDLY, EMAIL, ALL_SERVICES } from "../site";
 import "../css/engagement.css";
 
 const TIERS = [
@@ -11,11 +11,11 @@ const TIERS = [
     name: "Architecture Audit & Blueprint",
     timeline: "2–3 WEEKS",
     summary:
-      "Deep-dive technical review of your existing codebase, data pipelines, model latencies, and cloud infrastructure.",
+      "Deep technical review of existing codebases, data pipelines, model latencies, and cloud infrastructure.",
     deliverables: [
       "End-to-end performance & bottleneck audit",
-      "Security, data lineage & compliance risk matrix",
-      "Actionable architecture blueprint & milestone roadmap",
+      "Security, data lineage & compliance matrix",
+      "Actionable architecture milestone blueprint",
       "Executive & engineering advisory walkthrough",
     ],
     idealFor: "Companies facing scalability walls or planning major architectural shifts.",
@@ -27,10 +27,10 @@ const TIERS = [
     name: "Dedicated Engineering Pod",
     timeline: "ONGOING SPRINTS",
     summary:
-      "A senior, embedded technical pod (AI specialists, data architects, and full-stack engineers) integrated directly into your engineering workflows.",
+      "A senior, embedded technical pod (AI specialists, data architects, and full-stack engineers) in your sprint cycle.",
     deliverables: [
       "High-velocity production code delivery",
-      "Hands-on architectural governance and code review",
+      "Direct architectural governance and code review",
       "Zero recruitment latency or agency overhead",
       "Flexible bi-weekly sprint pacing and scaling",
     ],
@@ -55,17 +55,9 @@ const TIERS = [
   },
 ];
 
-const PRACTICE_AREAS = [
-  "AI & Agentic Systems",
-  "Data Engineering & Lakehouse",
-  "Full-Stack Web Applications",
-  "Native & Cross-Platform Mobile",
-  "Cloud & DevOps Architecture",
-];
-
 export default function Engagement() {
   const [selectedTier, setSelectedTier] = useState("audit");
-  const [selectedPractices, setSelectedPractices] = useState(["AI & Agentic Systems"]);
+  const [selectedPractices, setSelectedPractices] = useState(["AI automation"]);
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -77,6 +69,18 @@ export default function Engagement() {
   const [submitError, setSubmitError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [ticketId, setTicketId] = useState("");
+
+  // Listen for cross-component service selection from Capabilities or Footer
+  useEffect(() => {
+    const handler = (e) => {
+      const service = e.detail;
+      if (service) {
+        setSelectedPractices((prev) => (prev.includes(service) ? prev : [...prev, service]));
+      }
+    };
+    window.addEventListener("hash:select-service", handler);
+    return () => window.removeEventListener("hash:select-service", handler);
+  }, []);
 
   const togglePractice = (area) => {
     if (selectedPractices.includes(area)) {
@@ -182,16 +186,14 @@ export default function Engagement() {
         {/* Section Header */}
         <div className="section-head">
           <div className="eyebrow">
-            <span className="eyebrow-dot" />
-            PARTNERSHIP FRAMEWORKS
+            05 // PARTNERSHIP FRAMEWORKS
           </div>
           <div className="section-head-grid">
-            <h2 className="display h2 section-title">
-              Predictable, Senior-Led <span className="sweep">Engagement Models.</span>
+            <h2 className="display h2 section-title editorial-gradient-heading">
+              Transparent Engagement Models &amp; Scope Builder.
             </h2>
             <p className="lede section-desc">
-              We operate with total pricing transparency and engineering ownership. Choose the engagement
-              model that matches your technical timeline.
+              Choose an engagement model or build a custom technical scope below for direct architect review.
             </p>
           </div>
         </div>
@@ -279,12 +281,11 @@ export default function Engagement() {
           <div className="inquiry-panel" id="contact">
             <div className="inquiry-header">
               <div className="eyebrow">
-                <span className="eyebrow-dot" />
-                INITIATE TECHNICAL CONSULTING
+                06 // CONFIGURE TECHNICAL SCOPE
               </div>
-              <h3 className="inquiry-title">Configure Your Technical Scope</h3>
+              <h3 className="inquiry-title">Interactive Engagement Scope Builder</h3>
               <p className="inquiry-subtitle">
-                Select your focus areas and engineering tier. A senior technical architect will evaluate
+                Select your focus services and engineering tier. A senior technical architect will evaluate
                 your brief and reply within 4 business hours.
               </p>
             </div>
@@ -308,7 +309,7 @@ export default function Engagement() {
                     rel="noopener noreferrer"
                     className="btn btn--primary"
                   >
-                    Schedule Discovery Video Call <FiArrowUpRight aria-hidden />
+                    Schedule Discovery Video Call <FiArrowUpRight aria-hidden="true" />
                   </a>
                   <button
                     type="button"
@@ -340,11 +341,12 @@ export default function Engagement() {
                     <span>{submitError}</span>
                   </div>
                 )}
-                {/* Step 1: Practice Areas Selection */}
+
+                {/* Step 1: 11 Selectable Services Chips */}
                 <div className="form-section">
-                  <label className="form-label mono">01 // SELECT RELEVANT PRACTICE AREAS</label>
-                  <div className="practice-pills" role="group" aria-label="Relevant Practice Areas">
-                    {PRACTICE_AREAS.map((area) => {
+                  <label className="form-label mono">01 // SELECT SERVICES (11 AVAILABLE OFFERINGS)</label>
+                  <div className="practice-pills" role="group" aria-label="11 Selectable Service Offerings">
+                    {ALL_SERVICES.map((area) => {
                       const active = selectedPractices.includes(area);
                       return (
                         <button
@@ -395,17 +397,17 @@ export default function Engagement() {
 
                 {/* Step 3: Contact & Scope Inputs */}
                 <div className="form-section">
-                  <label className="form-label mono">03 // PROJECT PARAMETERS & CONTACT</label>
+                  <label className="form-label mono">03 // PROJECT PARAMETERS &amp; CONTACT</label>
                   <div className="form-grid">
                     <div className="form-group">
-                      <label htmlFor="inq-name" className="input-label">
-                        Your Name
+                      <label className="input-label" htmlFor="client-name">
+                        Full Name / Role
                       </label>
                       <input
-                        id="inq-name"
+                        id="client-name"
                         type="text"
                         required
-                        placeholder="Dr. Alexander Chen"
+                        placeholder="e.g. Elena Vance, VP Engineering"
                         className="form-input"
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
@@ -413,74 +415,72 @@ export default function Engagement() {
                     </div>
 
                     <div className="form-group">
-                      <label htmlFor="inq-email" className="input-label">
+                      <label className="input-label" htmlFor="client-email">
                         Work Email
                       </label>
                       <input
-                        id="inq-email"
+                        id="client-email"
                         type="email"
                         required
-                        placeholder="a.chen@enterprise.com"
+                        placeholder="elena@enterprise.io"
                         className="form-input"
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                       />
                     </div>
+                  </div>
 
-                    <div className="form-group form-group--full">
-                      <label htmlFor="inq-timeline" className="input-label">
-                        Target Timeline
-                      </label>
-                      <select
-                        id="inq-timeline"
-                        className="form-input form-select"
-                        value={formState.timeline}
-                        onChange={(e) => setFormState({ ...formState, timeline: e.target.value })}
-                      >
-                        <option value="Immediate">Immediate Execution (&lt; 2 weeks)</option>
-                        <option value="Next 30 Days">Next 30 Days</option>
-                        <option value="Next Quarter">Next Quarter</option>
-                        <option value="Exploratory Architecture">Exploratory Architecture</option>
-                      </select>
-                    </div>
+                  <div className="form-group form-group--timeline">
+                    <label className="input-label" htmlFor="client-timeline">
+                      Target Project Timeline
+                    </label>
+                    <select
+                      id="client-timeline"
+                      className="form-input form-select"
+                      value={formState.timeline}
+                      onChange={(e) => setFormState({ ...formState, timeline: e.target.value })}
+                    >
+                      <option value="Immediate / Next 2 Weeks">Immediate / Next 2 Weeks</option>
+                      <option value="Next 30 Days">Next 30 Days</option>
+                      <option value="Next 60–90 Days">Next 60–90 Days</option>
+                      <option value="Exploratory Architecture Review">Exploratory Architecture Review</option>
+                    </select>
+                  </div>
 
-                    <div className="form-group form-group--full">
-                      <label htmlFor="inq-message" className="input-label">
-                        System Architecture Context &amp; Key Constraints
-                      </label>
-                      <textarea
-                        id="inq-message"
-                        rows={4}
-                        required
-                        placeholder="Brief overview of your current tech stack, scale/concurrency constraints, or upcoming system migration..."
-                        className="form-input form-textarea"
-                        value={formState.message}
-                        onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                      />
-                    </div>
+                  <div className="form-group">
+                    <label className="input-label" htmlFor="client-context">
+                      System Architecture Context &amp; Constraints
+                    </label>
+                    <textarea
+                      id="client-context"
+                      required
+                      rows={4}
+                      placeholder="Detail your system bottlenecks, current data estate, throughput requirements, or target tech stack..."
+                      className="form-input form-textarea"
+                      value={formState.message}
+                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    />
                   </div>
                 </div>
 
-                {/* Submit Row */}
-                <div className="form-actions-row">
-                  <button type="submit" className="btn btn--primary submit-btn" disabled={submitting}>
+                {/* Form Footer Action */}
+                <div className="form-submit-row">
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="btn btn--primary form-submit-btn"
+                  >
                     {submitting ? (
-                      <>
-                        <span className="submit-spinner" aria-hidden="true" />
-                        <span>Transmitting Scope...</span>
-                      </>
+                      "Transmitting Technical Brief..."
                     ) : (
                       <>
-                        <span>Submit Technical Scope Inquiry</span>
-                        <FiArrowUpRight aria-hidden="true" />
+                        Submit Technical Scope Brief <FiArrowUpRight aria-hidden="true" />
                       </>
                     )}
                   </button>
-                  <div className="direct-call-hint mono">
-                    <span>Prefer direct engineering contact?</span>
-                    <a href={CALENDLY} target="_blank" rel="noopener noreferrer">
-                      Schedule 30-min discovery call ↗
-                    </a>
+
+                  <div className="submit-disclaimer mono">
+                    Direct routing to lead engineers · Response within 4 hours
                   </div>
                 </div>
               </form>

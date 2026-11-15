@@ -109,7 +109,7 @@ export default async function handler(req, res) {
     pillars = [clean(body.pillars, 80)];
   }
   if (!pillars.length) {
-    pillars = ["AI & Agentic Systems"];
+    pillars = ["AI automation"];
   }
 
   // Input Validation

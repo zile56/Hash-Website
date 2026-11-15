@@ -31,12 +31,7 @@
   letter-spacing: -0.035em;
   line-height: 1.02;
   max-width: 18ch;
-  margin-bottom: 28px;
-  background: linear-gradient(120deg, #111113 0%, #111113 46%, #9a3412 72%, #e6481e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  margin-bottom: 24px;
 }
 
 .hero-lede {

@@ -241,6 +241,61 @@ ol {
   color: var(--text-primary);
 }
 
+/* Signature 3-stop editorial gradient heading utility
+   Flows cohesively across Hero, Manifesto, Blueprint, Capabilities, CaseStudies, Engagement, and Footer */
+.editorial-gradient-heading {
+  background: linear-gradient(105deg, #111113 0%, #111113 48%, #9a3412 74%, #e6481e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Metric Traction Accents */
+.metric-accent-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.metric-accent-svg {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  max-width: 68px;
+  height: 8px;
+  pointer-events: none;
+}
+
+.metric-accent-wave {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  max-width: 76px;
+  height: 10px;
+  pointer-events: none;
+}
+
+.metric-accent-circle-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.metric-accent-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 22px);
+  height: calc(100% + 14px);
+  pointer-events: none;
+}
+
 .lede {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   color: var(--text-secondary);

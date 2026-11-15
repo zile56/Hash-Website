@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import "../css/manifesto.css";
 
 const MANIFESTO_TEXT =
-  "We reject brittle data pipelines and speculative AI prototypes. Hash architects sovereign, high-throughput data estates and deterministic agentic systems that run in production without degradation.";
+  "We reject brittle data pipelines and speculative AI prototypes. Hash architects sovereign, high-throughput systems that perform under load without degradation.";
 
 function WordIlluminator({ word, index, total, progress }) {
   const start = index / total;
@@ -39,7 +39,7 @@ export default function Manifesto() {
         {/* Section Header */}
         <div className="manifesto-header">
           <div className="eyebrow manifesto-eyebrow">
-            02 // THE ENGINEERING MANIFESTO
+            01 // THE ENGINEERING MANIFESTO
           </div>
           <div className="manifesto-meta mono">
             <span>DISCIPLINE OVER SPECULATION</span>
@@ -48,7 +48,12 @@ export default function Manifesto() {
           </div>
         </div>
 
-        {/* De-boxed: Sits directly over golden silk between top & bottom 1px hairlines */}
+        {/* Primary H2 Display Heading with Editorial Gradient */}
+        <h2 className="display h2 manifesto-title editorial-gradient-heading">
+          Discipline Over Speculation. Verified In Production.
+        </h2>
+
+        {/* De-Boxed: Sits directly over golden silk between top & bottom 1px hairlines */}
         <div className="manifesto-deboxed">
           <p className="manifesto-statement">
             {words.map((word, i) => (
@@ -64,7 +69,7 @@ export default function Manifesto() {
 
           <div className="manifesto-deboxed-footer">
             <span className="mono footer-tag">VERIFIED IN PRODUCTION</span>
-            <span className="mono footer-coord">SYSTEM INVARIANTS · PRODUCTION SLA</span>
+            <span className="mono footer-coord">100% PRODUCTION RUNBOOKS · SYSTEM INVARIANTS</span>
           </div>
         </div>
       </div>

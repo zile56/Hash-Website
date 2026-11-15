@@ -36,10 +36,17 @@ export function jsonLdForPath(pathname) {
     url: SITE_URL,
     description: HOME_DESC,
     knowsAbout: [
-      "AI & Agentic Systems",
-      "Data Engineering & Analytics",
-      "Full-Stack Web Applications",
-      "Native and Cross-Platform Mobile Engineering"
+      "AI automation",
+      "AI voice agents",
+      "n8n & workflow engineering",
+      "Full-stack development",
+      "Mobile apps",
+      "Web design & development",
+      "Cloud, data & DevOps",
+      "Game development",
+      "POS systems",
+      "SEO",
+      "Digital advertising"
     ]
   };
 
