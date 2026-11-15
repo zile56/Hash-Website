@@ -43,7 +43,7 @@ export default function Manifesto() {
           </div>
           <div className="manifesto-meta mono">
             <span>DISCIPLINE OVER SPECULATION</span>
-            <span className="meta-sep">//</span>
+            <span className="meta-sep">·</span>
             <span>SYSTEM INVARIANTS</span>
           </div>
         </div>

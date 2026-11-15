@@ -93,8 +93,8 @@ export default function Footer() {
             <div className="foot__metric-val-wrap">
               <span className="metric-accent-circle-wrap">
                 <span className="foot__metric-val mono">10+</span>
-                <svg className="metric-accent-circle" viewBox="0 0 76 44" fill="none" aria-hidden="true">
-                  <ellipse cx="38" cy="22" rx="34" ry="18" stroke="#E6481E" strokeWidth="1.8" strokeDasharray="3 2" opacity="0.9" />
+                <svg className="metric-accent-circle" viewBox="0 0 76 44" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                  <ellipse cx="38" cy="22" rx="34" ry="18" stroke="#E6481E" strokeWidth="2" />
                 </svg>
               </span>
             </div>
@@ -111,11 +111,6 @@ export default function Footer() {
               </span>
             </div>
             <div className="foot__metric-lbl mono">To First Release</div>
-          </div>
-
-          <div className="foot__metric-col">
-            <div className="foot__metric-val mono">100%</div>
-            <div className="foot__metric-lbl mono">Direct Code Ownership</div>
           </div>
         </div>
 
@@ -134,7 +129,7 @@ export default function Footer() {
 
           {/* 2-Column Services Index */}
           <nav className="foot__col foot__services-col" aria-label="11 Core Services">
-            <h3 className="foot__col-title">Services // 11 Practice Areas</h3>
+            <h3 className="foot__col-title">Services · 11 Practice Areas</h3>
             <div className="foot__services-grid">
               <ul className="foot__services-subcol">
                 {SERVICES_COL_1.map((s) => (

@@ -101,8 +101,8 @@ export default function Hero() {
                   {item.accentType === "circle" && (
                     <span className="metric-accent-circle-wrap">
                       <span className="matrix-value mono">{item.value}</span>
-                      <svg className="metric-accent-circle" viewBox="0 0 76 44" fill="none" aria-hidden="true">
-                        <ellipse cx="38" cy="22" rx="34" ry="18" stroke="#E6481E" strokeWidth="1.8" strokeDasharray="3 2" opacity="0.9" />
+                      <svg className="metric-accent-circle" viewBox="0 0 76 44" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                        <ellipse cx="38" cy="22" rx="34" ry="18" stroke="#E6481E" strokeWidth="2" />
                       </svg>
                     </span>
                   )}

@@ -282,7 +282,7 @@ export default function Engagement() {
               <div className="eyebrow">
                 CONFIGURE TECHNICAL SCOPE
               </div>
-              <h3 className="inquiry-title">Interactive Engagement Scope Builder</h3>
+              <h2 className="inquiry-title editorial-gradient-heading">Interactive Engagement Scope Builder</h2>
               <p className="inquiry-subtitle">
                 Select your focus services and engineering tier. A senior technical architect will evaluate
                 your brief and reply within 4 business hours.

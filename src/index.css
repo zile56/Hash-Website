@@ -244,11 +244,11 @@ ol {
 /* Signature 3-stop editorial gradient heading utility
    Flows cohesively across Hero, Manifesto, Blueprint, Capabilities, CaseStudies, Engagement, and Footer */
 .editorial-gradient-heading {
-  background: linear-gradient(105deg, #111113 0%, #111113 48%, #9a3412 74%, #e6481e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  background: linear-gradient(105deg, #111113 0%, #111113 48%, #9a3412 74%, #e6481e 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
@@ -259,6 +259,7 @@ ol {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
+  width: fit-content;
 }
 
 .metric-accent-svg {
@@ -283,16 +284,17 @@ ol {
 
 .metric-accent-circle-wrap {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 14px;
 }
 
 .metric-accent-circle {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(100% + 22px);
-  height: calc(100% + 14px);
+  inset: -4px -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 8px);
   pointer-events: none;
 }
 

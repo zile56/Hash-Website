@@ -171,11 +171,13 @@
 }
 
 .inquiry-panel {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-default);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(17, 17, 19, 0.14);
   border-radius: var(--radius-lg);
   padding: clamp(24px, 4vw, 44px);
-  box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 8px 32px -8px rgba(17, 17, 19, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .inquiry-header {
@@ -187,7 +189,6 @@
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: var(--text-primary);
   margin-bottom: 10px;
 }
 
