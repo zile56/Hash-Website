@@ -5,9 +5,7 @@ import {
   FiDatabase,
   FiLayers,
   FiShield,
-  FiTrendingUp,
   FiCheckCircle,
-  FiArrowRight,
 } from "react-icons/fi";
 import "../css/blueprint.css";
 
@@ -139,11 +137,6 @@ export default function ArchitectureBlueprint() {
             <div className="terminal-slug mono">
               <code>hash::unified_platform_blueprint_v3.2.sh</code>
             </div>
-
-            <div className="terminal-telemetry mono">
-              <span className="telemetry-pulse-dot" />
-              <span>LIVE CLUSTER TELEMETRY: 2.4M MSG/S</span>
-            </div>
           </div>
 
           {/* Board Navigation Tabs */}
@@ -240,7 +233,6 @@ export default function ArchitectureBlueprint() {
             <div className="stage-telemetry-col">
               <div className="telemetry-header">
                 <span className="telemetry-title mono">INVARIANT BENCHMARKS</span>
-                <span className="telemetry-badge mono">P95 SLA</span>
               </div>
 
               <div className="telemetry-cards">
@@ -259,12 +251,6 @@ export default function ArchitectureBlueprint() {
                     <span className="metric-note">{m.note}</span>
                   </motion.div>
                 ))}
-              </div>
-
-              {/* Verified SLA Footnote */}
-              <div className="telemetry-footer mono">
-                <FiTrendingUp className="telemetry-footer-icon" aria-hidden="true" />
-                <span>BENCHMARKED ON DEDICATED HOSTING CLUSTERS</span>
               </div>
             </div>
           </div>

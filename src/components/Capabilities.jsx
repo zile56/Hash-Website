@@ -38,7 +38,6 @@ export default function Capabilities() {
                 <div className="pillar-badge mono">
                   <span className="pillar-name">{pillar.pillarTitle}</span>
                 </div>
-                <div className="pillar-tagline mono">{pillar.tagline}</div>
               </div>
 
               {/* Accordion List for Services */}

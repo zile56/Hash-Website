@@ -66,11 +66,6 @@ export default function Manifesto() {
               />
             ))}
           </p>
-
-          <div className="manifesto-deboxed-footer">
-            <span className="mono footer-tag">VERIFIED IN PRODUCTION</span>
-            <span className="mono footer-coord">100% PRODUCTION RUNBOOKS · SYSTEM INVARIANTS</span>
-          </div>
         </div>
       </div>
     </section>
