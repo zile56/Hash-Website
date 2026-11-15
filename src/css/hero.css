@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Hero — Open Editorial Layout
+   Breathing freely over Volumetric Golden Silk Animation
+   Selective Burnt-Orange (#E6481E) accent punch & vertical dividers
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  min-height: calc(100svh - var(--nav));
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--nav) + 56px);
+  padding-bottom: clamp(64px, 8vw, 96px);
+}
+
+.hero-editorial {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 6.4vw, 5.75rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  max-width: 18ch;
+  margin-bottom: 28px;
+  background: linear-gradient(120deg, #111113 0%, #111113 46%, #9a3412 72%, #e6481e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-lede {
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 1.8vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 56ch;
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(48px, 6vw, 68px);
+}
+
+.hero-btn-primary {
+  height: 48px;
+  padding: 0 24px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-radius: var(--radius);
+}
+
+.hero-btn-secondary {
+  height: 48px;
+  padding: 0 22px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: 1px solid var(--border-default);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  border-radius: var(--radius);
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: var(--border-strong);
+}
+
+/* ------------------------------------------------------------- matrix row -- */
+
+.hero-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+  border-top: 1px solid var(--border-default);
+}
+
+.hero-matrix-col {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 4vw, 36px) clamp(24px, 3vw, 40px);
+  border-right: 1px solid var(--border-default);
+}
+
+.hero-matrix-col:first-child {
+  padding-left: 0;
+}
+
+.hero-matrix-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.matrix-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.matrix-num {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.matrix-tag {
+  color: var(--text-secondary);
+}
+
+/* Stacked metric number and sub-label */
+.matrix-stat-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.matrix-value {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 3.4vw, 2.85rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.matrix-metric-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+
+.matrix-desc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 36ch;
+}
+
+/* ------------------------------------------------------------- responsive -- */
+
+@media (max-width: 900px) {
+  .hero-matrix {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-matrix-col {
+    padding: 24px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .hero-matrix-col:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding-top: calc(var(--nav) + 32px);
+    padding-bottom: 48px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

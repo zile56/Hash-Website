@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-15T01:27:00Z",
+  "title": "Design System: Hash",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Technical Cobalt",
+        "canonical": "#1e6bff",
+        "tonalRamp": ["#0a2561", "#0f378a", "#154bb8", "#1e6bff", "#4485ff", "#70a3ff", "#a3c4ff", "#e0edff"]
+      },
+      "obsidian-canvas": {
+        "role": "neutral",
+        "displayName": "Obsidian Canvas",
+        "canonical": "#08090b",
+        "tonalRamp": ["#040506", "#08090b", "#0e1117", "#151a22", "#1c222d", "#28313e", "#3a4657", "#5e6875"]
+      },
+      "slate-surface": {
+        "role": "neutral",
+        "displayName": "Slate Surface",
+        "canonical": "#0e1117",
+        "tonalRamp": ["#08090b", "#0e1117", "#151a22", "#1c222d", "#262f3d", "#364254", "#4e5e75", "#6c809c"]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Primary Inks",
+        "canonical": "#f0f2f5",
+        "tonalRamp": ["#5e6875", "#7a8594", "#9da7b3", "#b8c1cc", "#d1d7df", "#e2e6ec", "#f0f2f5", "#ffffff"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Space Grotesk Display", "purpose": "Hero statements and primary brand hooks." },
+      "headline": { "displayName": "Space Grotesk Headline", "purpose": "Section headings (h2)." },
+      "title": { "displayName": "Space Grotesk Title", "purpose": "Card titles and capability modules." },
+      "body": { "displayName": "Instrument Sans Body", "purpose": "Technical copy and architecture narratives." },
+      "label": { "displayName": "JetBrains Mono Label", "purpose": "Code snippets, status badges, and metrics." }
+    },
+    "shadows": [
+      { "name": "accent-glow", "value": "0 0 16px -4px rgba(30, 107, 255, 0.25)", "purpose": "Directional hover glow on primary interactive elements." },
+      { "name": "card-hover", "value": "0 4px 20px -6px rgba(0, 0, 0, 0.6)", "purpose": "Surface separation on interactive card hover." }
+    ],
+    "motion": [
+      { "name": "ease-technical", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Mechanical precision easing for state transitions." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "940px" },
+      { "name": "lg", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast technical action button.",
+      "html": "<button class=\"ds-btn-primary\">Consult Engineers <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"M7 17L17 7M17 7H7M17 7V17\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 8px; background: #1e6bff; color: #ffffff; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; border: 1px solid rgba(255, 255, 255, 0.16); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 16px -4px rgba(30, 107, 255, 0.25); cursor: pointer; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s; } .ds-btn-primary:hover { transform: translateY(-2px); background: #3b82f6; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 24px -4px rgba(30, 107, 255, 0.4); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Subtle ghost button for secondary exploration.",
+      "html": "<button class=\"ds-btn-secondary\">Explore Systems</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 8px; background: rgba(255, 255, 255, 0.03); color: #f0f2f5; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; border: 1px solid rgba(255, 255, 255, 0.12); cursor: pointer; transition: transform 0.2s, background 0.2s, border-color 0.2s; } .ds-btn-secondary:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.20); }"
+    },
+    {
+      "name": "Brand Monogram",
+      "kind": "custom",
+      "refersTo": "brand-logo",
+      "description": "Engineered Hash monogram container.",
+      "html": "<div class=\"ds-brand\"><div class=\"ds-brand-mark\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#1e6bff\" stroke-width=\"2\"><path d=\"M9.5 5.5L7.5 18.5M16.5 5.5L14.5 18.5M6 9.5H19M5 14.5H18\" stroke-linecap=\"round\"/></svg></div><span class=\"ds-brand-text\">Hash</span></div>",
+      "css": ".ds-brand { display: inline-flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; color: #f0f2f5; } .ds-brand-mark { width: 26px; height: 26px; background: #151a22; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; display: grid; place-items: center; } .ds-brand-mark svg { width: 14px; height: 14px; } .ds-brand-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.04em; }"
+    },
+    {
+      "name": "Technical Chip",
+      "kind": "chip",
+      "refersTo": "chip-mono",
+      "description": "Status badge or taxonomy pill.",
+      "html": "<span class=\"ds-chip\"><span class=\"ds-chip-dot\"></span> AI & Agentic Systems</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #0e1117; border: 1px solid rgba(255, 255, 255, 0.08); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9da7b3; } .ds-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; box-shadow: 0 0 6px rgba(16, 185, 129, 0.6); }"
+    },
+    {
+      "name": "Architecture Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Structured container with 1px border and hover lift.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Distributed Agent Orchestration</h3><p class=\"ds-card-body\">Multi-tenant agent coordination pipelines with deterministic state evaluation and sub-100ms handoffs.</p></div>",
+      "css": ".ds-card { background: #0e1117; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 24px; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, box-shadow 0.2s; } .ds-card:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, 0.18); box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.6); } .ds-card-title { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; color: #f0f2f5; margin: 0 0 8px 0; } .ds-card-body { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #9da7b3; margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Obsidian Engine",
+    "overview": "Hash is an engineering-led technical consulting firm specializing in AI & agentic systems, distributed data engineering, full-stack platforms, and mobile apps. The visual language conveys quiet authority, cryptographic precision, and architectural resilience.",
+    "keyCharacteristics": [
+      "Sovereign Monolith: 90–95% obsidian neutrals and dark slate surfaces.",
+      "Micro-Engineered Borders: Crisp 1px hairlines (rgba(255, 255, 255, 0.08)) that subtly illuminate on hover.",
+      "Single Sharp Accent: Pure technical cobalt (#1E6BFF), hue 255° in OKLCH, with zero purple/violet pollution.",
+      "Tabular Rigor: JetBrains Mono for system metrics, execution statuses, and technical metadata.",
+      "Symmetric Spatial Rhythm: Locked 1280px container, strict vertical flow, zero horizontal overflow."
+    ],
+    "rules": [
+      {
+        "name": "The 90/10 Neutral Supremacy Rule",
+        "body": "The visual canvas must maintain at least 90–95% obsidian and slate neutrals. The primary accent is restricted to under 10% of any viewport. Its rarity is the core of its authority.",
+        "section": "colors"
+      },
+      {
+        "name": "The Anti-Neon Doctrine",
+        "body": "Purple, violet, magenta, and multi-colored rainbow gradients are explicitly prohibited. Gradient text is restricted to high-contrast white-to-slate sweeps.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Precision Rule",
+        "body": "Every numeric figure, performance metric, latency readout, and timestamp must render in JetBrains Mono with tabular figures enabled.",
+        "section": "typography"
+      },
+      {
+        "name": "The Structural Hairline Rule",
+        "body": "Depth is communicated through contrasting surface tones (#08090B -> #0E1117 -> #151A22) coupled with 1px border highlights, never blurry drop shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do maintain strict 90–95% obsidian neutral dominance on every screen.",
+      "Do enforce exact 44px height and 8px border-radius on all interactive buttons.",
+      "Do use JetBrains Mono with tabular figures for all metrics, numbers, and system readouts.",
+      "Do keep text line lengths between 50 and 68 characters for maximum legibility.",
+      "Do test viewports at 1440px and 390px to guarantee zero horizontal scroll."
+    ],
+    "donts": [
+      "Don't introduce purple, violet, magenta, or neon rainbow gradients.",
+      "Don't use decorative stock 3D cartoons, floating isometric cubes, or generic AI iconography.",
+      "Don't use all-caps for headings or navigation links.",
+      "Don't set body copy below 16px or with contrast lower than 7:1 against its background.",
+      "Don't use multi-level dropdowns or bloated mega-menus."
+    ]
+  }
+}

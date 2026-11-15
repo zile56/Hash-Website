@@ -1,0 +1,213 @@
+/* ==========================================================================
+   Case Studies — Architectural 1px Ink-Hairline Rows
+   Oversized #111113 Space Grotesk metrics, zero heavy rounded cards, zero orange bleed
+   ========================================================================== */
+
+.casestudies-section {
+  position: relative;
+  background: transparent;
+  padding-block: clamp(72px, 8vw, 120px);
+}
+
+.casestudies-eyebrow {
+  color: var(--text-secondary);
+}
+
+.casestudies-rows {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1px solid var(--border-default);
+}
+
+.casestudy-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-block: clamp(36px, 5vw, 56px);
+  border-bottom: 1px solid var(--border-default);
+  transition: background 0.2s var(--ease);
+}
+
+.casestudy-row:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Row Header: Meta in Muted Slate */
+.study-row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.study-row-meta {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.study-num {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.study-tag {
+  color: var(--text-secondary);
+}
+
+.study-client {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+/* Title & Oversized Metrics Grid */
+.study-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+  margin-bottom: clamp(28px, 4vw, 40px);
+}
+
+.study-row-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.6vw, 2.35rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.16;
+  color: var(--text-primary);
+  max-width: 24ch;
+}
+
+/* Oversized Space Grotesk Metrics in #111113 (Deep Editorial Ink) */
+.study-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+}
+
+.study-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.study-metric-val {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.6vw, 2.45rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.study-metric-lbl {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.study-metric-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+/* Challenge & Deployed Architecture (Clean Unboxed Grid) */
+.study-breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  padding-bottom: 24px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.study-breakdown-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.breakdown-tag {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.breakdown-body {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Stack Chips Row */
+.study-stack-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stack-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.stack-chips-list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.hairline-chip {
+  padding: 4px 8px;
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* ------------------------------------------------------------- responsive -- */
+
+@media (max-width: 960px) {
+  .study-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .study-breakdown-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .study-metrics-strip {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
