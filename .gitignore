@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies & Build
 node_modules
 dist
 dist-ssr
@@ -23,37 +24,12 @@ dist-ssr
 *.sln
 *.sw?
 
-# Node/Vite caches and heavy outputs
-.vite/
-.cache/
-.parcel-cache/
-.npm/
-.yarn/
-*.tgz
-coverage/
-.nyc_output/
-out/
-tmp/
-temp/
+# Reference HTML drafts
+hash-website.html
+HASH%20Software%20Consultants.html
+*.html.bak
 
-# Environment files
+# Environment
 .env
 .env.*
 !.env.example
-
-# OS junk
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-
-# Storybook static build
-storybook-static/
-
-# Test artifact folders
-jest-results/
-playwright-report/
-test-results/
-
-# Firebase deploy cache
-.firebase/
