@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 export const LogoIntro: React.FC = () => {
   const [isComplete, setIsComplete] = useState(false);
   const [isDocking, setIsDocking] = useState(false);
+  const [isLocking, setIsLocking] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const flyerRef = useRef<HTMLDivElement>(null);
   const dockTriggeredRef = useRef(false);
@@ -11,7 +12,7 @@ export const LogoIntro: React.FC = () => {
     if (dockTriggeredRef.current) return;
     dockTriggeredRef.current = true;
 
-    // Immediately restore scrolling on the body so interaction is never blocked
+    // Immediately restore scrolling on the body so interactions are never blocked
     document.body.style.overflow = '';
 
     const target = document.querySelector('.brand-logo-img') as HTMLElement | null;
@@ -30,21 +31,26 @@ export const LogoIntro: React.FC = () => {
       const dy = targetCenterY - currentCenterY;
       const scale = targetRect.width / currentRect.width;
 
-      // GPU-composited hardware transform into target header position
+      // GPU-composited hardware glide to target header position (700ms)
       flyer.style.transform = `translate(calc(-50% + ${dx.toFixed(2)}px), calc(-50% + ${dy.toFixed(2)}px)) scale(${scale.toFixed(4)})`;
-      flyer.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      flyer.style.transition = 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
     }
 
     setIsDocking(true);
 
-    // After docking flight concludes, reveal the permanent navbar logo and unmount
+    // Lock-in / payoff beat right when the logo arrives at the header (at 680ms)
     setTimeout(() => {
-      document.body.classList.remove('intro-active');
-      if (target) {
-        target.style.opacity = '1';
-      }
-      setIsComplete(true);
-    }, 620);
+      setIsLocking(true);
+
+      // Settle permanent logo and clean unmount (at 1000ms)
+      setTimeout(() => {
+        document.body.classList.remove('intro-active');
+        if (target) {
+          target.style.opacity = '1';
+        }
+        setIsComplete(true);
+      }, 320);
+    }, 680);
   }, []);
 
   useEffect(() => {
@@ -59,17 +65,22 @@ export const LogoIntro: React.FC = () => {
 
     document.body.classList.add('intro-active');
 
+    // Preload crisp PNG logo
+    const preloadImg = new Image();
+    preloadImg.src = '/hash-logo.png';
+
     const video = videoRef.current;
     if (video) {
       video.muted = true;
       video.defaultMuted = true;
       video.playsInline = true;
-      video.playbackRate = 1.0;
+      // Paced playback so shards assemble and sheen sweeps naturally without pause
+      video.playbackRate = 1.35;
 
       const startPlayback = () => {
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((err) => {
+        const p = video.play();
+        if (p !== undefined) {
+          p.catch((err) => {
             console.warn('Playback pending user interaction:', err);
           });
         }
@@ -80,15 +91,22 @@ export const LogoIntro: React.FC = () => {
       } else {
         video.addEventListener('canplay', startPlayback, { once: true });
       }
+
+      // Continuous unbroken glide: trigger as soon as HASH letters form and sheen sweeps (~4.0s video time)
+      const handleTimeUpdate = () => {
+        if (video.currentTime >= 4.0) {
+          triggerDock();
+        }
+      };
+      video.addEventListener('timeupdate', handleTimeUpdate);
     }
 
-    // Safety fallback timer: Video is 6.67s; set safety net at 8.0s
-    // so the full animation is never cut off early, while preventing indefinite hang if decode fails
+    // Safety fallback timer: in case video decoding stalls
     const safetyTimer = setTimeout(() => {
       triggerDock();
-    }, 8000);
+    }, 4800);
 
-    // Optional Escape key for immediate skip
+    // Escape key skips directly into header dock
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault();
@@ -119,7 +137,7 @@ export const LogoIntro: React.FC = () => {
 
       <div
         ref={flyerRef}
-        className={`logo-intro-flyer ${isDocking ? 'logo-intro-flyer--docking' : ''}`}
+        className={`logo-intro-flyer ${isDocking ? 'logo-intro-flyer--docking' : ''} ${isLocking ? 'logo-intro-flyer--locked' : ''}`}
       >
         <div
           className="logo-intro-flyer-video-wrap"
@@ -143,6 +161,12 @@ export const LogoIntro: React.FC = () => {
           alt="HASH Logo"
           className="logo-intro-img"
           style={{ opacity: isDocking ? 1 : 0 }}
+        />
+
+        {/* Luminous lock-in accent pulse beat */}
+        <div
+          className={`logo-lockin-bloom ${isLocking ? 'logo-lockin-bloom--active' : ''}`}
+          aria-hidden="true"
         />
       </div>
     </div>

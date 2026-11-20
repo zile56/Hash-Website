@@ -1650,6 +1650,12 @@ body.intro-active .brand-logo-img {
   opacity: 0;
 }
 
+body.intro-active .brand-logo-sub {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
 body.intro-active .bg .sh,
 body.intro-active .bg-flow .circuit-runners path,
 body.intro-active .pl {
@@ -1662,15 +1668,16 @@ body.intro-active .pl {
   z-index: 99998;
   pointer-events: none;
   user-select: none;
+  overflow: visible !important;
 }
 
 .logo-intro-backdrop {
   position: fixed;
   inset: 0;
   z-index: 99998;
-  background: #000000;
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, #0c0e13 0%, #07080b 100%);
   opacity: 1;
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity;
 }
 
@@ -1693,6 +1700,7 @@ body.intro-active .pl {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible !important;
 }
 
 .logo-intro-flyer-video-wrap {
@@ -1707,14 +1715,18 @@ body.intro-active .pl {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  transition: opacity 0.22s ease;
+  transition: opacity 0.25s ease;
   will-change: opacity;
+  overflow: visible !important;
+  -webkit-mask-image: radial-gradient(ellipse 68% 68% at 50% 50%, #000 52%, transparent 80%);
+  mask-image: radial-gradient(ellipse 68% 68% at 50% 50%, #000 52%, transparent 80%);
 }
 
 .logo-intro-video {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  overflow: visible !important;
 }
 
 .logo-intro-img {
@@ -1724,8 +1736,32 @@ body.intro-active .pl {
   height: 100%;
   object-fit: contain;
   pointer-events: none;
-  transition: opacity 0.22s ease;
+  transition: opacity 0.25s ease;
   will-change: opacity;
+}
+
+/* Luminous lock-in / payoff pulse beat */
+.logo-lockin-bloom {
+  position: absolute;
+  inset: -6px -12px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.96);
+  box-shadow:
+    0 0 28px 4px rgba(230, 72, 30, 0.45),
+    inset 0 0 16px rgba(255, 255, 255, 0.7);
+  transition: opacity 0.18s ease-out, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-lockin-bloom--active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.logo-intro-flyer--locked {
+  filter: drop-shadow(0 0 8px rgba(230, 72, 30, 0.5)) drop-shadow(0 0 14px rgba(255, 255, 255, 0.6));
+  transition: filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Accessibility: Reduced Motion */
@@ -1736,8 +1772,10 @@ body.intro-active .pl {
     display: none !important;
   }
 
-  body.intro-active .brand-logo-img {
+  body.intro-active .brand-logo-img,
+  body.intro-active .brand-logo-sub {
     opacity: 1 !important;
+    transform: none !important;
   }
   *, *::before, *::after {
     animation: none !important;
