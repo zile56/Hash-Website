@@ -1,14 +1,14 @@
 :root {
-  --bg: #050608;
-  --surface: #0c0d10;
-  --cd: rgba(17, 19, 24, 0.82);
-  --fg: #f3f5f9;
+  --bg: #07080b;
+  --surface: #0c0e13;
+  --cd: rgba(13, 15, 20, 0.78);
+  --fg: #f4f5f8;
   --lead: #e4e7ee;
-  --mut: #9ba2ae;
-  --sv: #c8cdd8;
+  --mut: #a6adba;
+  --sv: #cbd1dc;
   --sv-bright: #ffffff;
-  --ln: rgba(255, 255, 255, 0.12);
-  --ln-hover: rgba(255, 255, 255, 0.3);
+  --ln: rgba(220, 226, 238, 0.13);
+  --ln-hover: rgba(220, 226, 238, 0.28);
 
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -41,6 +41,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  isolation: isolate;
 }
 
 a {
@@ -66,6 +67,6 @@ h1, h2, h3 {
 }
 
 :focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid rgba(255, 255, 255, 0.85);
   outline-offset: 3px;
 }

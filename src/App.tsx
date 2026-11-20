@@ -8,7 +8,6 @@ import { Marquee } from './components/Marquee';
 import { Services } from './components/Services';
 import { Stats } from './components/Stats';
 import { Work } from './components/Work';
-import { Testimonials } from './components/Testimonials';
 import { CaseStudy } from './components/CaseStudy';
 import { Process } from './components/Process';
 import { Industries } from './components/Industries';
@@ -29,7 +28,7 @@ export const App: React.FC = () => {
       const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, y / max));
 
-      const bg = document.querySelector('.bg-canvas') as HTMLElement | null;
+      const bg = document.querySelector('.bg') as HTMLElement | null;
       if (bg) {
         bg.style.setProperty('--p', progress.toFixed(4));
       }
@@ -46,7 +45,7 @@ export const App: React.FC = () => {
     window.addEventListener('resize', queueScrollUpdate, { passive: true });
     queueScrollUpdate();
 
-    // Scroll reveal observer
+    // DAQ-inspired scroll reveal observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -56,10 +55,10 @@ export const App: React.FC = () => {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
 
-    const elements = document.querySelectorAll('.reveal-init, .spotlight-card');
+    const elements = document.querySelectorAll('.reveal-init, .spotlight-card, .site-section');
     elements.forEach((el) => observer.observe(el));
 
     return () => {
@@ -82,7 +81,6 @@ export const App: React.FC = () => {
         <Services />
         <Stats />
         <Work />
-        <Testimonials />
         <CaseStudy />
         <Process />
         <Industries />
