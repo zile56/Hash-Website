@@ -22,15 +22,17 @@ import { LogoIntro } from './components/LogoIntro';
 
 export const App: React.FC = () => {
   useEffect(() => {
+    // Respect prefers-reduced-motion: reduce
+    const reducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Frame-batched scroll listener
     let scrollFrame = 0;
+    const bg = document.querySelector('.bg') as HTMLElement | null;
     const updateScroll = () => {
-      const y = window.scrollY;
-      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      const progress = Math.min(1, Math.max(0, y / max));
-
-      const bg = document.querySelector('.bg') as HTMLElement | null;
-      if (bg) {
+      if (!reducedMotion && bg) {
+        const y = window.scrollY;
+        const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const progress = Math.min(1, Math.max(0, y / max));
         bg.style.setProperty('--p', progress.toFixed(4));
       }
       scrollFrame = 0;
