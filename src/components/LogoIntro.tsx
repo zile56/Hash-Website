@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 export const LogoIntro: React.FC = () => {
-  const [isHidden, setIsHidden] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
   const [isDocking, setIsDocking] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const flyerRef = useRef<HTMLDivElement>(null);
@@ -30,9 +30,9 @@ export const LogoIntro: React.FC = () => {
       const dy = targetCenterY - currentCenterY;
       const scale = targetRect.width / currentRect.width;
 
-      // GPU-composited hardware transform into target position
+      // GPU-composited hardware transform into target header position
       flyer.style.transform = `translate(calc(-50% + ${dx.toFixed(2)}px), calc(-50% + ${dy.toFixed(2)}px)) scale(${scale.toFixed(4)})`;
-      flyer.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+      flyer.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
     }
 
     setIsDocking(true);
@@ -43,8 +43,8 @@ export const LogoIntro: React.FC = () => {
       if (target) {
         target.style.opacity = '1';
       }
-      setIsHidden(true);
-    }, 520);
+      setIsComplete(true);
+    }, 620);
   }, []);
 
   useEffect(() => {
@@ -53,26 +53,44 @@ export const LogoIntro: React.FC = () => {
       document.body.classList.remove('intro-active');
       const target = document.querySelector('.brand-logo-img') as HTMLElement | null;
       if (target) target.style.opacity = '1';
-      setIsHidden(true);
+      setIsComplete(true);
       return;
     }
 
     document.body.classList.add('intro-active');
 
-    // Video fast playback to keep the shard assembly snappy (~0.9s)
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 2.4;
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.playbackRate = 1.0;
+
+      const startPlayback = () => {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((err) => {
+            console.warn('Playback pending user interaction:', err);
+          });
+        }
+      };
+
+      if (video.readyState >= 2) {
+        startPlayback();
+      } else {
+        video.addEventListener('canplay', startPlayback, { once: true });
+      }
     }
 
-    // Trigger docking automatically when logo finishes assembly (~0.95s)
-    const dockTimer = setTimeout(() => {
+    // Safety fallback timer: Video is 6.67s; set safety net at 8.0s
+    // so the full animation is never cut off early, while preventing indefinite hang if decode fails
+    const safetyTimer = setTimeout(() => {
       triggerDock();
-    }, 950);
+    }, 8000);
 
-    // Keyboard shortcuts & click anywhere to skip/dock immediately
+    // Optional Escape key for immediate skip
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
+      if (e.key === 'Escape') {
         e.preventDefault();
         triggerDock();
       }
@@ -81,21 +99,18 @@ export const LogoIntro: React.FC = () => {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      clearTimeout(dockTimer);
+      clearTimeout(safetyTimer);
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.classList.remove('intro-active');
-      document.body.style.overflow = '';
     };
   }, [triggerDock]);
 
-  if (isHidden) {
+  if (isComplete) {
     return null;
   }
 
   return (
     <div
       className="logo-intro-root"
-      onClick={triggerDock}
       aria-hidden="true"
     >
       <div
@@ -118,7 +133,6 @@ export const LogoIntro: React.FC = () => {
             playsInline
             preload="auto"
             onEnded={triggerDock}
-            onError={triggerDock}
             className="logo-intro-video"
             aria-label="HASH Logo Animation"
           />
