@@ -18,6 +18,7 @@ import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ScrollTop } from './components/ScrollTop';
+import { LogoIntro } from './components/LogoIntro';
 
 export const App: React.FC = () => {
   useEffect(() => {
@@ -70,6 +71,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="site-wrapper">
+      <LogoIntro />
       <Background />
       <CursorGlow />
       <ScrollProgress />
