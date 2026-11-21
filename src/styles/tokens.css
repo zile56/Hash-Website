@@ -1,23 +1,19 @@
 :root {
-  --bg: #0B0C0E;
-  --surface: #111317;
-  --surface-hover: #171920;
-  --cd: #121419;
-  --cd-alt: #161820;
-  --fg: #F4F5F8;
-  --lead: #E4E7EE;
-  --mut: #969DAE;
-  --mut-dark: #6C7280;
-  --sv: #E6481E;
-  --sv-hover: #F25B32;
-  --sv-muted: rgba(230, 72, 30, 0.15);
-  --ln: rgba(255, 255, 255, 0.08);
-  --ln-strong: rgba(255, 255, 255, 0.14);
-  --ln-hover: rgba(255, 255, 255, 0.22);
+  --bg: #07080b;
+  --surface: #0c0e13;
+  --cd: rgba(13, 15, 20, 0.78);
+  --fg: #f4f5f8;
+  --lead: #e4e7ee;
+  --mut: #a6adba;
+  --sv: #cbd1dc;
+  --sv-bright: #ffffff;
+  --ln: rgba(220, 226, 238, 0.13);
+  --ln-hover: rgba(220, 226, 238, 0.28);
 
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-hand: 'Caveat', cursive;
 
   color-scheme: dark;
   box-sizing: border-box;
@@ -31,7 +27,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: 90px;
   background-color: var(--bg);
 }
 
@@ -46,6 +42,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  isolation: isolate;
 }
 
 a {
@@ -63,4 +60,15 @@ h1, h2, h3 {
 
 .mono {
   font-family: var(--font-mono);
+}
+
+.hw {
+  font-family: var(--font-hand);
+  font-weight: 500;
+  color: var(--sv);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 3px;
 }
