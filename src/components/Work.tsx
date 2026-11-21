@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { Quote } from 'lucide-react';
 import { PROJECTS, WORK_FILTERS, ProjectItem } from '../data/siteData';
 import { ProjectPreview } from './ProjectPreview';
-import { StickyNoteReview } from './StickyNoteReview';
 
 export const Work: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('*');
@@ -11,11 +11,14 @@ export const Work: React.FC = () => {
     : PROJECTS.filter((p) => p.category === activeFilter);
 
   return (
-    <section className="site-section" id="work">
-      <h2 className="section-heading">Work we’re proud of.</h2>
-      <p className="section-sub">
-        Apps, platforms and systems built for founders and teams who needed them yesterday.
-      </p>
+    <section className="site-section container-wide" id="work">
+      <div className="section-header">
+        <span className="section-eyebrow mono">Featured Work</span>
+        <h2 className="section-heading">Production systems shipped for clients.</h2>
+        <p className="section-sub">
+          Production applications, platforms, and automation systems engineered for founders and scaling teams.
+        </p>
+      </div>
 
       {/* Filter Tabs */}
       <div className="work-filters" role="tablist" aria-label="Project Categories">
@@ -24,7 +27,7 @@ export const Work: React.FC = () => {
             key={filter.key}
             role="tab"
             aria-selected={activeFilter === filter.key}
-            className={activeFilter === filter.key ? 'active' : ''}
+            className={`filter-btn ${activeFilter === filter.key ? 'active' : ''}`}
             onClick={() => setActiveFilter(filter.key)}
           >
             {filter.label}
@@ -32,36 +35,45 @@ export const Work: React.FC = () => {
         ))}
       </div>
 
-      {/* Project Cards with Sticky-Note Reviews */}
-      <div className="work-grid-container">
+      {/* Unified 2-Column Showcase Grid */}
+      <div className="showcase-grid">
         {filteredProjects.map((project: ProjectItem) => (
-          <div
+          <article
             key={project.id}
-            className="project-pair-wrapper"
+            className="showcase-card"
             data-category={project.category}
           >
-            <div className="spotlight-card project-card">
+            <div className="showcase-preview-wrap">
               <ProjectPreview type={project.previewType} />
+            </div>
 
-              <div className="project-body-content">
-                <div className="project-top-meta">
-                  <small className="project-client-name">for {project.client}</small>
-                  <span className="project-metric-pill mono">{project.metricsBadge}</span>
-                </div>
-                <h3>{project.title}</h3>
-                <p>{project.desc}</p>
+            <div className="showcase-content">
+              <div className="showcase-meta-row">
+                <span className="showcase-client-tag">{project.clientMeta}</span>
+                <span className="showcase-metric-badge mono">{project.metricsBadge}</span>
+              </div>
 
-                <div className="tag-pills">
-                  {project.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
+              <h3 className="showcase-title">{project.title}</h3>
+              <p className="showcase-desc">{project.desc}</p>
+
+              <div className="showcase-tags">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tech-tag mono">{tag}</span>
+                ))}
+              </div>
+
+              {/* Integrated Client Quote */}
+              <div className="showcase-quote-box">
+                <Quote size={16} className="quote-icon" aria-hidden="true" />
+                <p className="quote-text">"{project.review.quote}"</p>
+                <div className="quote-author-row">
+                  <span className="quote-author">{project.review.author}</span>
+                  <span className="quote-sep">•</span>
+                  <span className="quote-role">{project.review.role}, {project.review.company}</span>
                 </div>
               </div>
             </div>
-
-            {/* Tactile Sticky Note Review directly paired underneath */}
-            <StickyNoteReview review={project.review} />
-          </div>
+          </article>
         ))}
       </div>
     </section>

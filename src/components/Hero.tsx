@@ -1,147 +1,114 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import React from 'react';
+import { ArrowUpRight, Check, Code2, Cpu, Database, ShieldCheck } from 'lucide-react';
 
-const TASKS = [
-  'AI agent answering customer calls',
-  'Leads synced to your CRM',
-  'Invoice reminders sent on time',
-  'Weekly report built and emailed',
-  'Support emails sorted and replied',
-];
-
-const TRUST_POINTS = [
-  'Free 30-min call',
-  'Clear timelines',
-  'You own the code',
+const DELIVERY_PILLARS = [
+  {
+    icon: Code2,
+    title: 'Web & Mobile Apps',
+    desc: 'High-performance cross-platform Flutter mobile apps and responsive React / Next.js web applications.',
+    tags: ['React', 'Next.js', 'Flutter'],
+  },
+  {
+    icon: Cpu,
+    title: 'AI Agents & Automation',
+    desc: 'Custom autonomous LLM agents, voice assistants, and operational workflows trained on business data.',
+    tags: ['Python', 'LangChain', 'FastAPI'],
+  },
+  {
+    icon: Database,
+    title: 'Data & Cloud Systems',
+    desc: 'Relational & vector databases, real-time telemetry dashboards, and scalable cloud architectures.',
+    tags: ['PostgreSQL', 'AWS', 'Docker'],
+  },
 ];
 
 export const Hero: React.FC = () => {
-  const [checkedCount, setCheckedCount] = useState<number>(0);
-  const padRef = useRef<HTMLDivElement>(null);
-
-  // Auto-checking sequential loop with visibility handling
-  useEffect(() => {
-    let count = 0;
-    let timer: ReturnType<typeof setInterval> | null = null;
-
-    const startTimer = () => {
-      if (timer || document.hidden) return;
-      timer = setInterval(() => {
-        count = (count + 1) % (TASKS.length + 1);
-        setCheckedCount(count);
-      }, 1100);
-    };
-
-    const stopTimer = () => {
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
-      }
-    };
-
-    startTimer();
-
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        stopTimer();
-      } else {
-        startTimer();
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      stopTimer();
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, []);
-
-  // 3D tilt interaction (desktop only)
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!padRef.current) return;
-    const rect = padRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    padRef.current.style.transform = `perspective(900px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
-  };
-
-  const handlePointerLeave = () => {
-    if (!padRef.current) return;
-    padRef.current.style.transform = '';
-  };
-
   return (
-    <section className="hero-section" id="top">
-      <div>
+    <section className="hero-section container-wide" id="top">
+      <div className="hero-left">
+        <div className="consultancy-badge">
+          <span className="badge-dot" aria-hidden="true" />
+          <span>Islamabad Software &amp; AI Engineering Consultancy</span>
+        </div>
+
         <h1 className="hero-title">
-          <span className="word-reveal" style={{ '--d': '0.1s' } as React.CSSProperties}>Automate</span>{' '}
-          <span className="word-reveal" style={{ '--d': '0.2s' } as React.CSSProperties}>the</span>{' '}
-          <s className="strike-reveal word-reveal" style={{ '--d': '0.35s' } as React.CSSProperties}>
-            busywork.
-          </s>
-          <br />
-          <span className="hw word-reveal" style={{ '--d': '0.7s' } as React.CSSProperties}>
-            Keep the business.
-          </span>
+          Custom software, mobile apps, and AI systems built for your business.
         </h1>
 
-        <p className="hero-lead word-reveal" style={{ '--d': '0.9s' } as React.CSSProperties}>
-          We build AI, web and mobile software that takes the busywork off your team and keeps your business moving around the clock.
+        <p className="hero-lead">
+          HASH Software Consultants designs, builds, and deploys production software for startups and growing companies. You get direct access to our engineers, weekly working builds, and full ownership of your source code.
         </p>
 
-        <div className="hero-cta-group word-reveal" style={{ '--d': '1.05s' } as React.CSSProperties}>
+        <div className="hero-cta-group">
           <a className="btn-primary" href="#contact">
-            Start a project <ArrowUpRight size={18} />
+            Start a project <ArrowUpRight size={17} />
           </a>
-          <a className="btn-secondary" href="#contact">
-            Book a 30-min call
+          <a className="btn-secondary" href="#work">
+            View our work
           </a>
         </div>
 
-        <ul className="hero-trust-list word-reveal" style={{ '--d': '1.2s' } as React.CSSProperties}>
-          {TRUST_POINTS.map((point) => (
-            <li key={point}>{point}</li>
-          ))}
-        </ul>
+        <div className="hero-trust-strip">
+          <div className="trust-item">
+            <Check size={14} className="trust-icon" />
+            <span>Free 30-minute consultation</span>
+          </div>
+          <span className="trust-divider" aria-hidden="true">•</span>
+          <div className="trust-item">
+            <Check size={14} className="trust-icon" />
+            <span>Weekly working builds</span>
+          </div>
+          <span className="trust-divider" aria-hidden="true">•</span>
+          <div className="trust-item">
+            <Check size={14} className="trust-icon" />
+            <span>Full source code ownership</span>
+          </div>
+        </div>
       </div>
 
-      <div
-        className="hero-pad-wrapper word-reveal"
-        style={{ '--d': '0.8s' } as React.CSSProperties}
-        onPointerMove={handlePointerMove}
-        onPointerLeave={handlePointerLeave}
-      >
-        <div className="interactive-pad" ref={padRef}>
-          <span className="pad-tag live-badge">
-            <span className="live-dot" aria-hidden="true" /> live
-          </span>
-          <h3 className="pad-heading">Automation running</h3>
+      <div className="hero-right">
+        <div className="architecture-card">
+          <div className="arch-header">
+            <div className="arch-header-left">
+              <span className="arch-status-dot" aria-hidden="true" />
+              <span className="arch-title">Engineering Delivery Model</span>
+            </div>
+            <span className="arch-badge mono">Production Ready</span>
+          </div>
 
-          <ul className="pad-list">
-            {TASKS.map((task, idx) => {
-              const isDone = idx < checkedCount;
+          <div className="arch-pillars">
+            {DELIVERY_PILLARS.map((pillar) => {
+              const IconComp = pillar.icon;
               return (
-                <li key={task} className={isDone ? 'checked' : ''}>
-                  <div className="pad-checkbox" aria-hidden="true" />
-                  <span className="pad-task-label">{task}</span>
-                  <span className={`task-status-pill ${isDone ? 'done' : 'queued'}`}>
-                    {isDone ? 'automated' : 'queued'}
-                  </span>
-                </li>
+                <div key={pillar.title} className="arch-pillar-item">
+                  <div className="pillar-icon-wrap">
+                    <IconComp size={18} />
+                  </div>
+                  <div className="pillar-content">
+                    <div className="pillar-header">
+                      <h4>{pillar.title}</h4>
+                    </div>
+                    <p>{pillar.desc}</p>
+                    <div className="pillar-tags">
+                      {pillar.tags.map((tag) => (
+                        <span key={tag} className="pillar-tag mono">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               );
             })}
-          </ul>
+          </div>
 
-          <div className="pad-footer">
-            <div className="progress-bar-track">
-              <div
-                className="progress-bar-fill"
-                style={{ width: `${checkedCount * 20}%` }}
-                aria-label={`${checkedCount * 20}% complete`}
-              />
+          <div className="arch-footer">
+            <div className="arch-spec-row">
+              <span className="spec-label">Core Stack:</span>
+              <span className="spec-values mono">React, Next.js, Flutter, Python, AWS, PostgreSQL</span>
             </div>
-            <span className="mono pad-counter">{checkedCount} of 5 automated</span>
+            <div className="arch-guarantee-row">
+              <ShieldCheck size={15} className="guarantee-icon" />
+              <span>Full IP and Git repository transfer upon completion</span>
+            </div>
           </div>
         </div>
       </div>

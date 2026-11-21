@@ -1,54 +1,28 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { PROCESS_STEPS } from '../data/siteData';
 
 export const Process: React.FC = () => {
-  const [lineActive, setLineActive] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setLineActive(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section className="site-section" id="process">
-      <h2 className="section-heading">How we work.</h2>
-      <p className="section-sub">
-        Five clear steps, with you in the loop at every one.
-      </p>
+    <section className="site-section container-wide" id="process">
+      <div className="section-header">
+        <span className="section-eyebrow mono">Delivery Process</span>
+        <h2 className="section-heading">How we build and ship software.</h2>
+        <p className="section-sub">
+          A disciplined, five-step delivery cadence with weekly working builds and full transparency.
+        </p>
+      </div>
 
-      <div ref={containerRef}>
-        <div className={`process-line ${lineActive ? 'animated' : ''}`} aria-hidden="true" />
-
-        <div className="process-grid">
-          {PROCESS_STEPS.map((step) => (
-            <div key={step.stepNumber} className="spotlight-card">
-              <div
-                className="service-icon-box mono"
-                style={{ fontSize: '18px', fontWeight: 700 }}
-              >
-                0{step.stepNumber}
-              </div>
-              <h3 style={{ fontSize: '19px' }}>{step.title}</h3>
-              <p style={{ marginTop: '8px' }}>{step.desc}</p>
+      <div className="process-editorial-row">
+        {PROCESS_STEPS.map((step) => (
+          <div key={step.stepNumber} className="process-step-col">
+            <div className="process-step-top">
+              <span className="process-step-num mono">0{step.stepNumber}</span>
+              <span className="process-step-line" aria-hidden="true" />
             </div>
-          ))}
-        </div>
+            <h3 className="process-step-title">{step.title}</h3>
+            <p className="process-step-desc">{step.desc}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -2,15 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface StatItem {
   target: number;
+  prefix?: string;
   suffix?: string;
   label: string;
+  detail: string;
 }
 
 const STATS_DATA: StatItem[] = [
-  { target: 12, suffix: '+', label: 'Projects shipped' },
-  { target: 10, label: 'Happy clients' },
-  { target: 8, label: 'Core services' },
-  { target: 24, suffix: 'h', label: 'Average response time' },
+  { target: 12, suffix: '+', label: 'Projects shipped', detail: 'Production web, mobile & AI apps' },
+  { target: 10, suffix: '+', label: 'Clients', detail: 'Founders & scaling teams' },
+  { target: 8, label: 'Core services', detail: 'End-to-end technical capabilities' },
+  { target: 24, suffix: 'h', label: 'Average response time', detail: 'Direct engineering Slack & calls' },
 ];
 
 export const Stats: React.FC = () => {
@@ -41,17 +43,14 @@ export const Stats: React.FC = () => {
 
   const animateNumbers = () => {
     const startTime = performance.now();
-    const duration = 1600;
+    const duration = 1200;
 
     const step = (now: number) => {
       const progress = Math.min((now - startTime) / duration, 1);
-      // easeOutCubic
       const ease = 1 - Math.pow(1 - progress, 3);
 
       setCounts(
-        STATS_DATA.map((item) => {
-          return Math.round(item.target * ease);
-        })
+        STATS_DATA.map((item) => Math.round(item.target * ease))
       );
 
       if (progress < 1) {
@@ -63,19 +62,18 @@ export const Stats: React.FC = () => {
   };
 
   return (
-    <section className="site-section" id="stats" ref={sectionRef}>
-      <div className="cards-grid">
+    <section className="stats-section container-wide" id="stats" ref={sectionRef}>
+      <div className="stats-strip-bar">
         {STATS_DATA.map((stat, idx) => (
-          <div
-            key={stat.label}
-            className="spotlight-card"
-            style={{ '--d': `${idx * 0.1}s` } as React.CSSProperties}
-          >
-            <div className="big-stat-number">
-              {counts[idx]}
-              {stat.suffix && <span style={{ color: 'var(--sv)', fontSize: '0.85em' }}>{stat.suffix}</span>}
+          <div key={stat.label} className="stat-col">
+            <div className="stat-number-wrap">
+              <span className="stat-number">{counts[idx]}</span>
+              {stat.suffix && <span className="stat-suffix">{stat.suffix}</span>}
             </div>
-            <p style={{ marginTop: '8px' }}>{stat.label}</p>
+            <div className="stat-text">
+              <h4 className="stat-label">{stat.label}</h4>
+              <p className="stat-detail">{stat.detail}</p>
+            </div>
           </div>
         ))}
       </div>

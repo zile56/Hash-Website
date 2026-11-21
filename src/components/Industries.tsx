@@ -1,38 +1,24 @@
 import React from 'react';
-import { INDUSTRIES, SOLUTIONS } from '../data/siteData';
+import { TARGET_INDUSTRIES } from '../data/siteData';
 
 export const Industries: React.FC = () => {
-  const industriesDoubled = [...INDUSTRIES, ...INDUSTRIES, ...INDUSTRIES, ...INDUSTRIES];
-  const solutionsDoubled = [...SOLUTIONS, ...SOLUTIONS, ...SOLUTIONS, ...SOLUTIONS];
-
   return (
-    <section className="site-section" id="industries">
-      <h2 className="section-heading">Industries we build for.</h2>
-      <p className="section-sub">
-        The same engineering, tuned to how your sector actually works.
-      </p>
+    <section className="site-section container-wide" id="industries">
+      <div className="section-header">
+        <span className="section-eyebrow mono">Domain Expertise</span>
+        <h2 className="section-heading">Industries and solutions we build for.</h2>
+        <p className="section-sub">
+          Proven architecture patterns adapted to the operational requirements of your sector.
+        </p>
+      </div>
 
-      <div className="industries-marquees-wrap" aria-hidden="true">
-        <div className="marquee-container" style={{ marginTop: '34px' }}>
-          <div className="marquee-track">
-            {industriesDoubled.map((ind, idx) => (
-              <span key={`ind-${ind}-${idx}`}>
-                <span style={{ color: 'var(--sv)', marginRight: '8px' }}>◈</span>
-                {ind}
-              </span>
-            ))}
+      <div className="industries-pill-grid">
+        {TARGET_INDUSTRIES.map((item) => (
+          <div key={item} className="industry-pill">
+            <span className="industry-pill-dot" aria-hidden="true" />
+            <span className="industry-pill-text">{item}</span>
           </div>
-        </div>
-
-        <div className="marquee-container reverse">
-          <div className="marquee-track">
-            {solutionsDoubled.map((sol, idx) => (
-              <span key={`sol-${sol}-${idx}`}>
-                {sol}
-              </span>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

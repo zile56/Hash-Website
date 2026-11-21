@@ -7,70 +7,57 @@ export interface ServiceItem {
 export const SERVICES: ServiceItem[] = [
   {
     iconName: 'Brain',
-    title: 'AI & Machine Learning',
-    desc: 'Custom models and autonomous AI agents that take repeat work off your team.',
+    title: 'AI and Machine Learning',
+    desc: 'Custom AI agents, voice assistants, and workflow automation tools trained on your business data to handle repetitive operations.',
   },
   {
     iconName: 'BarChart3',
-    title: 'Data & Analytics',
-    desc: 'Pipelines and live dashboards that turn raw numbers into high-conviction decisions.',
+    title: 'Data and Analytics',
+    desc: 'Automated data pipelines, SQL warehouses, and live reporting dashboards that turn raw operational records into clear metrics.',
   },
   {
     iconName: 'Globe',
     title: 'Web Development',
-    desc: 'Fast, secure sites and web applications, from high-converting landing pages to complex SaaS.',
+    desc: 'Fast, secure web applications, customer portals, and SaaS platforms built with React, Next.js, and modern cloud infrastructure.',
   },
   {
     iconName: 'Smartphone',
     title: 'Mobile Apps',
-    desc: 'iOS and Android apps engineered to feel truly native, fluid, and ready to scale.',
+    desc: 'Native iOS and Android applications built for smooth performance, offline reliability, and clean App Store deployment.',
   },
   {
     iconName: 'Layers',
-    title: 'Flutter',
-    desc: 'One shared production codebase, two app stores, shipped in half the standard development time.',
+    title: 'Flutter Development',
+    desc: 'A single shared codebase compiled for both iOS and Android, cutting development time and maintenance costs in half.',
   },
   {
     iconName: 'Server',
-    title: 'Full Stack Engineering',
-    desc: 'APIs, relational/vector databases, cloud orchestration, and responsive internal admin consoles.',
+    title: 'Full-Stack Engineering',
+    desc: 'Backend APIs, relational and vector databases, authentication systems, and internal admin panels engineered to handle real traffic.',
   },
   {
     iconName: 'Palette',
-    title: 'Graphics & Branding',
-    desc: 'Logos, cohesive social kits, and pitch decks that make your company look the part.',
+    title: 'Graphics and Branding',
+    desc: 'Logos, visual identity systems, social media kits, and investor pitch decks that give your product a consistent look.',
   },
   {
     iconName: 'Layout',
     title: 'UI/UX Design',
-    desc: 'User research, wireframes, and interactive Figma prototypes people genuinely enjoy using.',
+    desc: 'User flows, wireframes, and interactive Figma prototypes tested for clarity before a single line of production code is written.',
   },
 ];
 
-export const CLIENTS = [
-  'Northwind',
-  'Lumio',
-  'Kestrel Labs',
-  'Orbitly',
-  'Vantage',
-  'Meridian',
-  'Zenith Pay',
-  'Foldr',
-];
-
 export const TECH_STACK = [
-  'Flutter',
   'React',
   'Next.js',
-  'Node.js',
-  'Python',
-  'TensorFlow',
-  'Firebase',
-  'Figma',
-  'AWS',
-  'PostgreSQL',
+  'Flutter',
   'TypeScript',
+  'Python',
+  'Node.js',
+  'PostgreSQL',
+  'AWS',
   'Docker',
+  'Figma',
 ];
 
 export interface ProjectReview {
@@ -78,14 +65,13 @@ export interface ProjectReview {
   author: string;
   role: string;
   company: string;
-  signature: string;
-  tilt: number;
 }
 
 export interface ProjectItem {
   id: string;
   title: string;
   client: string;
+  clientMeta: string;
   desc: string;
   tags: string[];
   category: 'm' | 'w' | 'a'; // m = Mobile, w = Web, a = AI & Data
@@ -98,186 +84,146 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'circlo',
     title: 'Circlo',
-    client: 'Shahzeb',
-    desc: 'Private social circles with group chat, events and shared calendars.',
-    tags: ['Flutter', 'Firebase'],
+    client: 'Circlo Inc.',
+    clientMeta: 'Circlo • Social & Shared Calendars',
+    desc: 'Private social circles with end-to-end chat, scheduled group events, and instant calendar synchronization.',
+    tags: ['Flutter', 'Firebase', 'Mobile'],
     category: 'm',
     previewType: 'circle-sync',
     metricsBadge: '4.9★ App Store · 50k MAU',
     review: {
       quote: 'HASH delivered our Flutter app two weeks ahead of schedule. The calendar sync and offline chat feel smoother than apps ten times our budget.',
-      author: 'Shahzeb',
+      author: 'Shahzeb M.',
       role: 'Founder',
       company: 'Circlo',
-      signature: 'Shahzeb M.',
-      tilt: -1.2,
     },
   },
   {
     id: 'copool',
     title: 'Copool',
-    client: 'Sajid',
-    desc: 'Carpooling that matches riders by route and splits fares automatically.',
-    tags: ['Full stack', 'Maps'],
+    client: 'Copool Transit',
+    clientMeta: 'Copool • Mobility & Automated Transit',
+    desc: 'Carpooling platform that computes route overlaps in sub-40ms and handles split-fare payment settlement automatically.',
+    tags: ['Full Stack', 'Maps API', 'Web'],
     category: 'w',
     previewType: 'carpool-map',
     metricsBadge: 'Sub-40ms Route Match',
     review: {
-      quote: 'Clean updates, clean code and no surprises. Our riders noticed the immediate route calculation speed on day one.',
-      author: 'Sajid',
+      quote: 'Clean updates, clean code, and no surprises. Our riders noticed the immediate route calculation speed on day one.',
+      author: 'Sajid K.',
       role: 'Founder',
       company: 'Copool',
-      signature: 'Sajid K.',
-      tilt: 1.0,
     },
   },
   {
     id: 'namaz-counter',
     title: 'Namaz Counter',
-    client: 'Nakki',
-    desc: 'Prayer tracker with reminders, streaks and a Qibla compass.',
-    tags: ['Flutter', 'UI/UX'],
+    client: 'FaithTech Studio',
+    clientMeta: 'Namaz Counter • Faith & Offline Utilities',
+    desc: 'Prayer tracker with automated notifications, streak records, and an offline magnetic-sensor Qibla compass.',
+    tags: ['Flutter', 'Sensor APIs', 'Mobile'],
     category: 'm',
     previewType: 'prayer-compass',
     metricsBadge: '100% Offline Calibration',
     review: {
       quote: 'The compass calibration and fluid animations made our app stand out on the Play Store. Over 60,000 monthly active users with zero crashes.',
-      author: 'Nakki',
+      author: 'Nakki H.',
       role: 'Product Lead',
       company: 'Namaz Counter',
-      signature: 'Nakki H.',
-      tilt: -0.8,
     },
   },
   {
     id: 'alpha',
     title: 'Alpha',
-    client: 'Tayyab',
-    desc: 'AI engine that reads market data and flags opportunities live.',
-    tags: ['AI/ML', 'Data'],
+    client: 'Alpha Telemetry',
+    clientMeta: 'Alpha Telemetry • Market AI & Telemetry',
+    desc: 'Automated intelligence engine reading live financial streams, anomaly detection, and automated morning executive briefs.',
+    tags: ['AI/ML', 'Python', 'Live Data'],
     category: 'a',
     previewType: 'ai-telemetry',
-    metricsBadge: '−62% Manual Reporting',
+    metricsBadge: '-62% Manual Reporting',
     review: {
       quote: 'The reporting engine gave our analysts their mornings back. What used to take four hours of manual collation now lands in our inboxes at 7 AM.',
-      author: 'Tayyab',
+      author: 'Tayyab R.',
       role: 'Founder',
       company: 'Alpha',
-      signature: 'Tayyab R.',
-      tilt: 1.2,
     },
   },
   {
     id: 'wilson',
     title: 'Wilson',
-    client: 'Wilson (client)',
-    desc: 'Sales dashboard joining CRM, invoices and reports in one view.',
-    tags: ['Data', 'Web'],
+    client: 'Wilson International',
+    clientMeta: 'Wilson International • Logistics & Finance',
+    desc: 'Centralized sales operations platform combining enterprise CRM data, automated invoices, and financial reporting in one view.',
+    tags: ['Data Pipelines', 'React', 'Cloud'],
     category: 'a',
     previewType: 'sales-funnel',
     metricsBadge: '$148.2k Monthly Volume',
     review: {
-      quote: 'Replaced three clunky legacy dashboards with one unified platform. Billing reconciliation that used to take days now runs in real-time.',
-      author: 'Wilson',
+      quote: 'Replaced three legacy dashboards with one unified platform. Billing reconciliation that used to take days now runs in real-time.',
+      author: 'Wilson T.',
       role: 'VP of Operations',
       company: 'Wilson International',
-      signature: 'Wilson T.',
-      tilt: -1.0,
     },
   },
   {
     id: 'system',
     title: 'System',
-    client: 'Bao Bao',
-    desc: 'Operations system for inventory, staff and approvals.',
-    tags: ['Full stack', 'Admin'],
+    client: 'Bao Logistics',
+    clientMeta: 'Bao Logistics • Supply Chain & Inventory',
+    desc: 'Operations management system handling multi-facility inventory tracking, staff scheduling, and two-tier approval chains.',
+    tags: ['Full Stack', 'PostgreSQL', 'Admin'],
     category: 'w',
     previewType: 'inventory-matrix',
     metricsBadge: 'Zero Latency Sync',
     review: {
-      quote: 'A rock-solid operations backend that handles hundreds of daily warehouse receipts and staff sign-offs with zero transaction lag.',
-      author: 'Bao Bao',
+      quote: 'A solid operations backend that handles hundreds of daily warehouse receipts and staff sign-offs with zero transaction lag.',
+      author: 'Bao Bao L.',
       role: 'Head of Operations',
       company: 'Bao Logistics',
-      signature: 'Bao Bao L.',
-      tilt: 0.8,
     },
   },
   {
     id: 'sissy',
     title: 'Sissy',
-    client: 'Shivaji',
-    desc: 'Fashion storefront with fast checkout and a custom brand identity.',
-    tags: ['Web', 'UI/UX', 'Graphics'],
+    client: 'Sissy Atelier',
+    clientMeta: 'Sissy Atelier • Fashion Commerce',
+    desc: 'Headless apparel storefront engineered for rapid checkout performance and a bespoke visual editorial design system.',
+    tags: ['Next.js', 'UI/UX', 'Commerce'],
     category: 'w',
     previewType: 'luxury-store',
     metricsBadge: '+34% Funnel Conversion',
     review: {
-      quote: 'Checkout conversion jumped 34% within the first month. The bespoke design system gives our apparel brand genuine luxury editorial weight.',
-      author: 'Shivaji',
+      quote: 'Checkout conversion jumped 34% within the first month. The bespoke design system gives our apparel brand strong editorial weight.',
+      author: 'Shivaji P.',
       role: 'Creative Director',
       company: 'Sissy Atelier',
-      signature: 'Shivaji P.',
-      tilt: -1.1,
     },
   },
   {
     id: 'last-of-us',
     title: 'LastofUs',
-    client: 'Jett',
-    desc: 'Community site and companion app for a story-driven game.',
-    tags: ['Web', 'Graphics', 'App'],
+    client: 'LastofUs Gaming',
+    clientMeta: 'LastofUs Gaming • Community & Companion Apps',
+    desc: 'Community hub and real-time companion application featuring interactive lore maps and live player matchmaking telemetry.',
+    tags: ['Web', 'Mobile Sync', 'App'],
     category: 'm',
     previewType: 'game-hud',
     metricsBadge: '12.4k Real-time Players',
     review: {
-      quote: 'The dark UI aesthetic, interactive lore maps, and companion app sync seamlessly. Our global player community fell in love with it on day one.',
-      author: 'Jett',
+      quote: 'The dark UI aesthetic, interactive lore maps, and companion app sync seamlessly. Our global player community welcomed it on day one.',
+      author: 'Jett V.',
       role: 'Community Lead',
       company: 'LastofUs Gaming',
-      signature: 'Jett V.',
-      tilt: 0.9,
     },
   },
 ];
 
 export const WORK_FILTERS = [
-  { key: '*', label: 'All' },
-  { key: 'm', label: 'Mobile' },
-  { key: 'w', label: 'Web' },
-  { key: 'a', label: 'AI & Data' },
-];
-
-export interface TestimonialItem {
-  id: string;
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
-}
-
-export const TESTIMONIALS: TestimonialItem[] = [
-  {
-    id: 'circlo',
-    quote: 'HASH turned a rough idea into a polished app in weeks. They answered every message like it was their own launch.',
-    author: 'Shahzeb',
-    role: 'Founder',
-    company: 'Circlo',
-  },
-  {
-    id: 'copool',
-    quote: 'Clear updates, clean code and no surprises. Our riders noticed the difference on day one.',
-    author: 'Sajid',
-    role: 'Founder',
-    company: 'Copool',
-  },
-  {
-    id: 'alpha',
-    quote: 'The reporting engine gave our team their mornings back. I would hire them again tomorrow.',
-    author: 'Tayyab',
-    role: 'Founder',
-    company: 'Alpha',
-  },
+  { key: '*', label: 'All Projects' },
+  { key: 'm', label: 'Mobile Apps' },
+  { key: 'w', label: 'Web Platforms' },
+  { key: 'a', label: 'AI & Data Systems' },
 ];
 
 export interface ProcessStep {
@@ -290,70 +236,41 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     stepNumber: 1,
     title: 'Discover',
-    desc: 'We listen, map your goals and scope the work.',
+    desc: 'We map your business workflows, define technical requirements, and agree on clear milestones.',
   },
   {
     stepNumber: 2,
     title: 'Design',
-    desc: 'Wireframes and prototypes you can click through.',
+    desc: 'Interactive Figma prototypes and system architecture diagrams tested before code is written.',
   },
   {
     stepNumber: 3,
     title: 'Build',
-    desc: 'Weekly builds you can test as we go.',
+    desc: 'Weekly working software builds pushed to a staging environment so you test as we build.',
   },
   {
     stepNumber: 4,
-    title: 'Launch',
-    desc: 'Testing, deployment and a calm release day.',
+    title: 'Deploy',
+    desc: 'Rigorous automated testing, security checks, and seamless production cloud release.',
   },
   {
     stepNumber: 5,
     title: 'Support',
-    desc: 'Fixes, updates and new features after launch.',
+    desc: 'Ongoing monitoring, feature expansions, and direct access to your engineering team.',
   },
 ];
 
-export interface JournalArticle {
-  category: string;
-  title: string;
-}
-
-export const JOURNAL_ARTICLES: JournalArticle[] = [
-  {
-    category: 'AI agents',
-    title: 'How AI agents can save a small team 20 hours a week',
-  },
-  {
-    category: 'Flutter',
-    title: 'Flutter or native: choosing the right path for your first app',
-  },
-  {
-    category: 'Design',
-    title: 'Five UI mistakes that quietly cost you customers',
-  },
-];
-
-export const INDUSTRIES = [
-  'Fintech',
+export const TARGET_INDUSTRIES = [
   'E-commerce',
   'Healthcare',
   'Logistics',
   'Education',
-  'Real estate',
+  'Real Estate',
   'Retail',
-  'Startups & SaaS',
-];
-
-export const SOLUTIONS = [
-  'AI support agents',
+  'AI Support Agents',
   'Custom CRMs',
-  'Workflow automation',
-  'Booking & payments',
-  'Live dashboards',
-  'Mobile apps',
-  'Admin portals',
-  'API integrations',
+  'Workflow Automation',
+  'Booking & Payments',
 ];
 
 export interface TeamMember {
@@ -366,7 +283,7 @@ export interface TeamMember {
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: 'Ubaid Malik',
-    role: 'Founder and CEO',
+    role: 'Founder & CEO',
     linkedin: 'https://www.linkedin.com/in/mubaidmalik',
     initials: 'UM',
   },
@@ -382,25 +299,13 @@ export const TEAM_MEMBERS: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/abdullah-bin-aftab',
     initials: 'AB',
   },
-  {
-    name: 'Zile Hasnain',
-    role: 'Mobile & Flutter Lead',
-    linkedin: 'https://www.linkedin.com/in/zile-hasnain-83b4a8267',
-    initials: 'ZH',
-  },
-  {
-    name: 'Irfan Hayyat',
-    role: 'Product & UI/UX Designer',
-    linkedin: 'https://www.linkedin.com/in/irfan-hayat-8a6494367',
-    initials: 'IH',
-  },
 ];
 
 export const CAREER_ROLES = [
   'Flutter Developer',
-  'ML Engineer',
+  'AI & ML Engineer',
   'UI/UX Designer',
-  'Full Stack Developer',
+  'Full-Stack Developer',
 ];
 
 export interface FAQItem {
@@ -410,23 +315,23 @@ export interface FAQItem {
 
 export const FAQS: FAQItem[] = [
   {
-    question: 'How long does a project take?',
-    answer: 'Most websites ship in 3 to 6 weeks and apps in 8 to 14, depending on scope.',
+    question: 'How long does a typical project take?',
+    answer: 'Most web platforms ship in 3 to 6 weeks, and mobile applications in 8 to 14 weeks depending on feature scope and third-party integrations.',
   },
   {
-    question: 'Do you work with startups?',
-    answer: 'Yes. Many of our clients are first-time founders, and we scope work to fit early budgets.',
+    question: 'Do you work with early-stage startups?',
+    answer: 'Yes. Many of our clients are early-stage founders. We scope realistic minimum viable products to get you to market quickly with production-grade engineering.',
   },
   {
-    question: 'Can you build Flutter apps?',
-    answer: 'Yes. Flutter is one of our core skills for shipping iOS and Android together.',
+    question: 'Can you build cross-platform Flutter applications?',
+    answer: 'Yes. Flutter is one of our primary frameworks. We build a single shared codebase that compiles natively for iOS and Android, reducing both build time and long-term maintenance.',
   },
   {
-    question: 'Who owns the code?',
-    answer: 'You do. Everything we build is handed over in full when the project is paid.',
+    question: 'Who owns the intellectual property and code?',
+    answer: 'You own 100% of your source code, design files, and technical assets. Everything is transferred to your GitHub repositories upon project milestone sign-off.',
   },
   {
-    question: 'Do you offer support after launch?',
-    answer: 'Yes. We offer monthly support plans for fixes, updates and new features.',
+    question: 'Do you provide ongoing support after deployment?',
+    answer: 'Yes. We offer monthly support plans for active infrastructure monitoring, security updates, and continued feature development.',
   },
 ];

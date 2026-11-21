@@ -4,28 +4,30 @@ import { CAREER_ROLES } from '../data/siteData';
 
 export const Careers: React.FC = () => {
   return (
-    <section className="site-section" id="careers">
-      <div className="spotlight-card" style={{ padding: 'clamp(28px, 4vw, 48px)' }}>
-        <h2 style={{ fontSize: 'clamp(28px, 4vw, 46px)', fontWeight: 800, letterSpacing: '-0.03em' }}>
-          We’re hiring.
-        </h2>
-        <p className="section-sub" style={{ margin: '10px 0 20px' }}>
-          Join an agile team shipping production systems for global founders. Open roles:
-        </p>
+    <section className="site-section container-wide" id="careers">
+      <div className="careers-box">
+        <div className="careers-header">
+          <span className="section-eyebrow mono">Careers</span>
+          <h2 className="section-heading">Join our engineering team.</h2>
+          <p className="section-sub" style={{ margin: '12px 0 24px' }}>
+            We are looking for engineers and designers who care about craft, clean architectures, and disciplined delivery. Islamabad-based with flexible remote options.
+          </p>
+        </div>
 
-        <div className="tag-pills" style={{ margin: '0 0 26px' }}>
+        <div className="career-roles-list">
           {CAREER_ROLES.map((role) => (
-            <span key={role}>{role}</span>
+            <div key={role} className="career-role-pill">
+              <span className="role-dot" aria-hidden="true" />
+              <span>{role}</span>
+            </div>
           ))}
         </div>
 
-        <p style={{ color: 'var(--mut)', marginBottom: '24px', fontSize: '16px' }}>
-          We look for curious minds who care about craft, clean architectures, and disciplined delivery. Remote-friendly, Islamabad-based.
-        </p>
-
-        <a className="btn-primary" href="#contact">
-          Send your portfolio or GitHub <ArrowUpRight size={18} />
-        </a>
+        <div className="careers-cta-row">
+          <a className="btn-primary" href="#contact">
+            Send your GitHub or portfolio <ArrowUpRight size={16} />
+          </a>
+        </div>
       </div>
     </section>
   );

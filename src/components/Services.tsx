@@ -24,26 +24,28 @@ const iconMap = {
 
 export const Services: React.FC = () => {
   return (
-    <section className="site-section" id="services">
-      <h2 className="section-heading">Everything software, under one roof.</h2>
-      <p className="section-sub">
-        From the first idea to the last deploy, our team covers the full stack of modern technology.
-      </p>
+    <section className="site-section container-wide" id="services">
+      <div className="section-header">
+        <span className="section-eyebrow mono">Capabilities</span>
+        <h2 className="section-heading">Engineered for production scale.</h2>
+        <p className="section-sub">
+          From first prototype to production release, our engineers cover every layer of modern software development.
+        </p>
+      </div>
 
-      <div className="cards-grid">
+      <div className="services-editorial-grid">
         {SERVICES.map((service: ServiceItem, idx: number) => {
           const IconComponent = iconMap[service.iconName];
           return (
-            <div
-              key={service.title}
-              className="spotlight-card"
-              style={{ '--d': `${(idx % 4) * 0.08}s` } as React.CSSProperties}
-            >
-              <div className="service-icon-box">
-                <IconComponent size={22} strokeWidth={1.5} />
+            <div key={service.title} className="service-editorial-item">
+              <div className="service-item-top">
+                <span className="service-num mono">0{idx + 1}</span>
+                <div className="service-icon-wrap">
+                  <IconComponent size={20} strokeWidth={1.5} />
+                </div>
               </div>
-              <h3>{service.title}</h3>
-              <p>{service.desc}</p>
+              <h3 className="service-title">{service.title}</h3>
+              <p className="service-desc">{service.desc}</p>
             </div>
           );
         })}

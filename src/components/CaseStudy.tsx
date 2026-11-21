@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, TrendingDown } from 'lucide-react';
 
 const METRICS = [
-  { label: 'Manual reporting time reduction', percent: '62%' },
-  { label: 'Faster decision turnaround', percent: '84%' },
-  { label: 'Automated monitoring coverage', percent: '100%' },
+  { label: 'Manual daily reporting time reduction', percent: '62%' },
+  { label: 'Faster decision turnaround time', percent: '84%' },
+  { label: 'Automated operational monitoring coverage', percent: '100%' },
 ];
 
 export const CaseStudy: React.FC = () => {
@@ -20,7 +21,7 @@ export const CaseStudy: React.FC = () => {
           }
         });
       },
-      { threshold: 0.25 }
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -31,45 +32,82 @@ export const CaseStudy: React.FC = () => {
   }, []);
 
   return (
-    <section className="site-section" id="cases" ref={sectionRef}>
-      <h2 className="section-heading">Case study: Alpha.</h2>
+    <section className="site-section container-wide" id="cases" ref={sectionRef}>
+      <div className="section-header">
+        <span className="section-eyebrow mono">Case Study</span>
+        <h2 className="section-heading">Alpha Telemetry: Automated Market Engine.</h2>
+      </div>
 
-      <div className="case-study-grid" style={{ marginTop: '24px' }}>
-        <div>
-          <p className="section-sub" style={{ margin: '14px 0 24px' }}>
-            Tayyab’s team spent every morning pulling numbers from five separate operational sources. We built an autonomous AI engine that reads live data streams, flags anomalous metrics, and dispatches an executive summary before market open.
-          </p>
+      <div className="case-study-split">
+        {/* Left: Narrative + Architecture */}
+        <div className="case-study-left">
+          <div className="case-summary-block">
+            <h3 className="case-subheading">The Challenge &amp; Solution</h3>
+            <p className="case-narrative">
+              Alpha's analysts spent three to four hours every morning manually gathering, verifying, and reconciling data across five disconnected operational feeds. Decisions were delayed until noon, and anomalies were frequently missed.
+            </p>
+            <p className="case-narrative">
+              HASH engineered an automated telemetry pipeline in Python and FastAPI. The system continuously ingests market streams, runs automated anomaly checks, and compiles an executive intelligence brief delivered directly to leadership at 7:00 AM daily.
+            </p>
+          </div>
 
-          <div className="tag-pills">
-            <span>AI/ML</span>
-            <span>Data pipelines</span>
-            <span>Dashboard</span>
-            <span>Alerts</span>
+          <div className="case-tech-block">
+            <span className="case-tech-label mono">Architecture &amp; Stack:</span>
+            <div className="case-tags">
+              <span className="tech-tag mono">Python</span>
+              <span className="tech-tag mono">FastAPI</span>
+              <span className="tech-tag mono">PostgreSQL</span>
+              <span className="tech-tag mono">Docker</span>
+              <span className="tech-tag mono">Live Telemetry</span>
+              <span className="tech-tag mono">Automated Alerts</span>
+            </div>
+          </div>
+
+          <div className="case-cta-wrap">
+            <a href="#contact" className="btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              Build a custom system for your team <ArrowUpRight size={16} />
+            </a>
           </div>
         </div>
 
-        <div className="spotlight-card">
-          {METRICS.map((metric) => (
-            <div key={metric.label}>
-              <p style={{ fontSize: '14px', color: 'var(--mut)', marginBottom: '4px' }}>
-                {metric.label}
-              </p>
-              <div className={`metric-bar-track ${animated ? 'animated' : ''}`}>
-                <span
-                  className="metric-bar-fill"
-                  style={{ '--v': metric.percent } as React.CSSProperties}
-                  aria-label={`${metric.label}: ${metric.percent}`}
-                />
-              </div>
+        {/* Right: Clean Metrics & Impact */}
+        <div className="case-study-right">
+          <div className="metric-hero-card">
+            <div className="metric-hero-top">
+              <span className="metric-badge-impact mono">
+                <TrendingDown size={14} /> Measured Outcome
+              </span>
             </div>
-          ))}
 
-          <div className="big-stat-number" style={{ marginTop: '20px' }}>
-            −62%
+            <div className="big-stat-number">-62%</div>
+            <p className="metric-headline-label">
+              Total reduction in manual operational reporting hours
+            </p>
+
+            <div className="metric-bars-group">
+              {METRICS.map((metric) => (
+                <div key={metric.label} className="metric-bar-item">
+                  <div className="metric-label-row">
+                    <span className="metric-name">{metric.label}</span>
+                    <span className="metric-val mono">{metric.percent}</span>
+                  </div>
+                  <div className="metric-track">
+                    <div
+                      className={`metric-fill ${animated ? 'animated' : ''}`}
+                      style={{ '--target-w': metric.percent } as React.CSSProperties}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="metric-quote-inline">
+              <p>
+                "What used to take four hours of manual collation now lands in our inboxes before market open. It gave our analysts their mornings back."
+              </p>
+              <span className="metric-quote-author">Tayyab R. • Founder, Alpha</span>
+            </div>
           </div>
-          <p style={{ color: 'var(--sv)', fontWeight: 500 }}>
-            less time spent on manual reporting
-          </p>
         </div>
       </div>
     </section>
