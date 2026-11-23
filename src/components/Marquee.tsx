@@ -29,12 +29,11 @@ const TECH_STACK = [
 export const Marquee: React.FC = () => {
   return (
     <div className="mq-wrapper" aria-label="Clients and Technology Stack">
-      {/* Row 1: Trusted by + Clients */}
+      {/* Row 1: Clients */}
       <div className="mq" aria-label="Clients">
         <div className="mq-track">
           {[0, 1].map((copyIndex) => (
             <React.Fragment key={copyIndex}>
-              <span className="mq-label">Trusted by</span>
               {CLIENTS.map((client) => (
                 <span key={`${copyIndex}-${client}`} className="mq-item">
                   <span className="mq-item-icon" aria-hidden="true">⬡</span>

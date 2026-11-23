@@ -120,7 +120,7 @@ export const Contact: React.FC = () => {
                 <input
                   id="contact-name"
                   type="text"
-                  placeholder="e.g. Sarah Jenkins"
+                  placeholder="Your name"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -133,7 +133,7 @@ export const Contact: React.FC = () => {
                 <input
                   id="contact-email"
                   type="email"
-                  placeholder="e.g. sarah@company.com"
+                  placeholder="you@company.com"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}

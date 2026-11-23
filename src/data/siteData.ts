@@ -72,6 +72,7 @@ export interface ProjectReview {
 export interface ProjectItem {
   id: string;
   title: string;
+  subtitle: string;
   client: string;
   clientMeta: string;
   desc: string;
@@ -89,6 +90,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'circlo',
     title: 'Circlo',
+    subtitle: 'Private social circles app',
     client: 'Circlo Inc.',
     clientMeta: 'Circlo • Social & Shared Calendars',
     desc: 'Private social circles with end-to-end chat, scheduled group events, and instant calendar synchronization.',
@@ -119,6 +121,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'copool',
     title: 'Copool',
+    subtitle: 'Route-matched carpooling platform',
     client: 'Copool Transit',
     clientMeta: 'Copool • Mobility & Automated Transit',
     desc: 'Carpooling platform that computes route overlaps in sub-40ms and handles split-fare payment settlement automatically.',
@@ -149,6 +152,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'namaz-counter',
     title: 'Namaz Counter',
+    subtitle: 'Prayer tracker and Qibla app',
     client: 'FaithTech Studio',
     clientMeta: 'Namaz Counter • Faith & Offline Utilities',
     desc: 'Prayer tracker with automated notifications, streak records, and an offline magnetic-sensor Qibla compass.',
@@ -179,6 +183,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'alpha',
     title: 'Alpha',
+    subtitle: 'Live market AI engine',
     client: 'Alpha Telemetry',
     clientMeta: 'Alpha Telemetry • Market AI & Telemetry',
     desc: 'Automated intelligence engine reading live financial streams, anomaly detection, and automated morning executive briefs.',
@@ -209,6 +214,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'wilson',
     title: 'Wilson',
+    subtitle: 'Unified sales and CRM dashboard',
     client: 'Wilson International',
     clientMeta: 'Wilson International • Logistics & Finance',
     desc: 'Centralized sales operations platform combining enterprise CRM data, automated invoices, and financial reporting in one view.',
@@ -239,6 +245,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'system',
     title: 'System',
+    subtitle: 'Inventory and operations portal',
     client: 'Bao Logistics',
     clientMeta: 'Bao Logistics • Supply Chain & Inventory',
     desc: 'Operations management system handling multi-facility inventory tracking, staff scheduling, and two-tier approval chains.',
@@ -269,6 +276,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'sissy',
     title: 'Sissy',
+    subtitle: 'Custom fashion storefront',
     client: 'Sissy Atelier',
     clientMeta: 'Sissy Atelier • Fashion Commerce',
     desc: 'Headless apparel storefront engineered for rapid checkout performance and a bespoke visual editorial design system.',
@@ -299,6 +307,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'last-of-us',
     title: 'LastofUs',
+    subtitle: 'Game community and companion app',
     client: 'LastofUs Gaming',
     clientMeta: 'LastofUs Gaming • Community & Companion Apps',
     desc: 'Community hub and real-time companion application featuring interactive lore maps and live player matchmaking telemetry.',
@@ -360,7 +369,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     stepNumber: 4,
     title: 'Deploy',
-    desc: 'Rigorous automated testing, security checks, and seamless production cloud release.',
+    desc: 'Automated testing, security checks, and a calm production launch.',
   },
   {
     stepNumber: 5,
@@ -370,15 +379,17 @@ export const PROCESS_STEPS: ProcessStep[] = [
 ];
 
 export const TARGET_INDUSTRIES = [
-  'E-commerce',
-  'Healthcare',
-  'Logistics',
-  'Education',
-  'Real Estate',
-  'Retail',
+  'Fintech & Banking',
+  'E-commerce & Retail',
+  'Healthcare & MedTech',
+  'Logistics & Supply Chain',
+  'Real Estate & PropTech',
+  'Education & EdTech',
+  'Startups & SaaS',
   'AI Support Agents',
-  'Custom CRMs',
+  'Custom CRMs & ERPs',
   'Workflow Automation',
+  'Live Dashboards & Data',
   'Booking & Payments',
 ];
 

@@ -18,9 +18,9 @@ export const Work: React.FC = () => {
   return (
     <section className="site-section container-wide" id="work">
       <div className="section-header">
-        <h2 className="section-heading">Production systems shipped for clients.</h2>
+        <h2 className="section-heading">Selected work.</h2>
         <p className="section-sub">
-          Cross-platform mobile apps, web applications, and AI pipelines engineered for founders and scaling teams. Click any project to inspect technical architecture, scope, and verified reviews.
+          Web apps, mobile products, and AI tools built for startups and growing teams.
         </p>
       </div>
 
@@ -39,48 +39,34 @@ export const Work: React.FC = () => {
         ))}
       </div>
 
-      {/* 2-Column Project Grid with Clean Image Container */}
+      {/* 2-Column Scannable Project Grid */}
       <div className="compact-project-grid">
-        {filteredProjects.map((project: ProjectItem) => {
-          const categoryLabel = project.category === 'm' ? 'Mobile App' : project.category === 'w' ? 'Web Platform' : 'AI & Data';
-          return (
-            <article
-              key={project.id}
-              className="compact-project-card"
-              data-category={project.category}
-              onClick={() => setSelectedProject(project)}
-              tabIndex={0}
-              role="button"
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setSelectedProject(project);
-                }
-              }}
-              aria-label={`View ${project.title} project details`}
-            >
-              {/* Clean Image Container (aspect-[16/10]) */}
-              <div className="project-card-image-wrap" aria-hidden="true">
-                <div className="th">
-                  <i />
-                  <b />
-                  <u />
-                </div>
-              </div>
+        {filteredProjects.map((project: ProjectItem) => (
+          <article
+            key={project.id}
+            className="compact-project-card"
+            data-category={project.category}
+            onClick={() => setSelectedProject(project)}
+            tabIndex={0}
+            role="button"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setSelectedProject(project);
+              }
+            }}
+            aria-label={`View ${project.title} project details`}
+          >
+            <div className="compact-card-info">
+              <h3 className="compact-card-title">{project.title}</h3>
+              <p className="compact-card-subtitle">{project.subtitle}</p>
+            </div>
 
-              <div className="compact-card-footer">
-                <div className="compact-card-body">
-                  <span className="compact-card-category mono">{categoryLabel}</span>
-                  <h3 className="compact-card-title">{project.title}</h3>
-                </div>
-
-                <div className="compact-card-action">
-                  <ArrowUpRight size={18} className="compact-card-arrow" />
-                </div>
-              </div>
-            </article>
-          );
-        })}
+            <div className="compact-card-action" aria-hidden="true">
+              <ArrowUpRight size={18} className="compact-card-arrow" />
+            </div>
+          </article>
+        ))}
       </div>
 
       {/* On-Click Project Modal */}

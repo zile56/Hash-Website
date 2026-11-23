@@ -9,7 +9,7 @@ export const Careers: React.FC = () => {
         <div className="careers-header">
           <h2 className="section-heading">Join our engineering team.</h2>
           <p className="section-sub" style={{ margin: '12px 0 24px' }}>
-            We are looking for engineers and designers who care about craft, clean architectures, and disciplined delivery. Islamabad-based with flexible remote options.
+            We are looking for engineers and designers who want to build and ship real software. Islamabad-based with flexible remote options.
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export const Careers: React.FC = () => {
 
         <div className="careers-cta-row">
           <a className="btn-primary" href="#contact">
-            Send your GitHub or portfolio <ArrowUpRight size={16} />
+            Send your CV <ArrowUpRight size={16} />
           </a>
         </div>
       </div>

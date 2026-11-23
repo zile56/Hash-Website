@@ -53,8 +53,6 @@ export const Navbar: React.FC = () => {
             src="/hash-logo.png"
             alt="HASH Logo"
             className="brand-logo-img"
-            width="38"
-            height="38"
           />
         </a>
 

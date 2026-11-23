@@ -5,9 +5,9 @@ export const Industries: React.FC = () => {
   return (
     <section className="site-section container-wide" id="industries">
       <div className="section-header">
-        <h2 className="section-heading">Industries and solutions we build for.</h2>
+        <h2 className="section-heading">Industries we build for.</h2>
         <p className="section-sub">
-          Proven architecture patterns adapted to the operational requirements of your sector.
+          Software built around how your business actually operates.
         </p>
       </div>
 

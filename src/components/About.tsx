@@ -19,16 +19,15 @@ export const About: React.FC = () => {
   return (
     <section className="site-section container-wide" id="about">
       <div className="section-header">
-        <h2 className="section-heading">Custom software engineered with discipline.</h2>
+        <h2 className="section-heading">Built in Islamabad. Shipped everywhere.</h2>
         <p className="section-sub">
-          An Islamabad-based team delivering production-grade engineering for startups and scaling businesses worldwide.
+          An independent software and AI team working directly with founders and product leads.
         </p>
       </div>
 
       <div className="about-editorial-grid">
-        {ABOUT_COLUMNS.map((col, idx) => (
+        {ABOUT_COLUMNS.map((col) => (
           <div key={col.title} className="about-col">
-            <span className="about-col-num mono">0{idx + 1}</span>
             <h3 className="about-col-title">{col.title}</h3>
             <p className="about-col-body">{col.body}</p>
           </div>
