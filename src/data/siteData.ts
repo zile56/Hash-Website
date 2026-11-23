@@ -65,6 +65,8 @@ export interface ProjectReview {
   author: string;
   role: string;
   company: string;
+  signature: string;
+  tilt: number;
 }
 
 export interface ProjectItem {
@@ -73,6 +75,9 @@ export interface ProjectItem {
   client: string;
   clientMeta: string;
   desc: string;
+  fullDesc: string;
+  scope: string[];
+  outcomes: string[];
   tags: string[];
   category: 'm' | 'w' | 'a'; // m = Mobile, w = Web, a = AI & Data
   previewType: 'circle-sync' | 'carpool-map' | 'prayer-compass' | 'ai-telemetry' | 'sales-funnel' | 'inventory-matrix' | 'luxury-store' | 'game-hud';
@@ -87,6 +92,17 @@ export const PROJECTS: ProjectItem[] = [
     client: 'Circlo Inc.',
     clientMeta: 'Circlo • Social & Shared Calendars',
     desc: 'Private social circles with end-to-end chat, scheduled group events, and instant calendar synchronization.',
+    fullDesc: 'Engineered a unified Flutter mobile application for iOS and Android featuring low-latency group messaging, end-to-end encryption, and cross-platform calendar synchronization that works reliably even on spotty mobile connections.',
+    scope: [
+      'Cross-platform Flutter mobile architecture with offline SQLite persistence',
+      'Real-time WebSocket event layer for instant group calendar updates',
+      'Automated CI/CD pipelines deploying to App Store TestFlight and Google Play Internal',
+    ],
+    outcomes: [
+      'Shipped production mobile releases 2 weeks ahead of target launch',
+      'Maintained 99.98% crash-free sessions across 50,000 monthly active users',
+      'Reduced background battery consumption by 40% via batch sync scheduling',
+    ],
     tags: ['Flutter', 'Firebase', 'Mobile'],
     category: 'm',
     previewType: 'circle-sync',
@@ -96,6 +112,8 @@ export const PROJECTS: ProjectItem[] = [
       author: 'Shahzeb M.',
       role: 'Founder',
       company: 'Circlo',
+      signature: 'Shahzeb M.',
+      tilt: -1.2,
     },
   },
   {
@@ -104,6 +122,17 @@ export const PROJECTS: ProjectItem[] = [
     client: 'Copool Transit',
     clientMeta: 'Copool • Mobility & Automated Transit',
     desc: 'Carpooling platform that computes route overlaps in sub-40ms and handles split-fare payment settlement automatically.',
+    fullDesc: 'Built an algorithmic route-matching web platform and driver dispatch system that calculates detour tolerances in real time and automatically executes escrow split-fare settlements upon ride completion.',
+    scope: [
+      'High-throughput geospatial matching engine running on PostgreSQL and PostGIS',
+      'Integrated Stripe Connect multi-party payment reconciliation and payout webhooks',
+      'Real-time driver location telemetry visualization with responsive map overlays',
+    ],
+    outcomes: [
+      'Sub-40 millisecond average route calculation latency under load',
+      'Automated 100% of driver payouts and split fares without human intervention',
+      'Zero dispatch service interruptions across 15,000 completed commute trips',
+    ],
     tags: ['Full Stack', 'Maps API', 'Web'],
     category: 'w',
     previewType: 'carpool-map',
@@ -113,6 +142,8 @@ export const PROJECTS: ProjectItem[] = [
       author: 'Sajid K.',
       role: 'Founder',
       company: 'Copool',
+      signature: 'Sajid K.',
+      tilt: 1.0,
     },
   },
   {
@@ -121,6 +152,17 @@ export const PROJECTS: ProjectItem[] = [
     client: 'FaithTech Studio',
     clientMeta: 'Namaz Counter • Faith & Offline Utilities',
     desc: 'Prayer tracker with automated notifications, streak records, and an offline magnetic-sensor Qibla compass.',
+    fullDesc: 'Engineered an offline-first mobile utility featuring continuous sensor fusion compass calibration, location-based astronomical prayer time algorithms, and zero-latency local notification scheduling.',
+    scope: [
+      'Sensor fusion Kalman filter for flutter device magnetic heading calibration',
+      'Astronomical calculation engine running 100% on-device without network calls',
+      'Low-power background push daemon adhering to strict iOS and Android battery limits',
+    ],
+    outcomes: [
+      'Over 60,000 monthly active users worldwide with 100% offline functionality',
+      '4.8-star average rating across Google Play and iOS App Store',
+      'Zero third-party analytics tracking, ensuring total user privacy',
+    ],
     tags: ['Flutter', 'Sensor APIs', 'Mobile'],
     category: 'm',
     previewType: 'prayer-compass',
@@ -130,6 +172,8 @@ export const PROJECTS: ProjectItem[] = [
       author: 'Nakki H.',
       role: 'Product Lead',
       company: 'Namaz Counter',
+      signature: 'Nakki H.',
+      tilt: -0.8,
     },
   },
   {
@@ -138,6 +182,17 @@ export const PROJECTS: ProjectItem[] = [
     client: 'Alpha Telemetry',
     clientMeta: 'Alpha Telemetry • Market AI & Telemetry',
     desc: 'Automated intelligence engine reading live financial streams, anomaly detection, and automated morning executive briefs.',
+    fullDesc: 'Designed and deployed an automated financial data pipeline and LLM summarization system that ingests live market tickers, detects statistical volume anomalies, and compiles executive digests every morning.',
+    scope: [
+      'Streaming event ingestion pipeline using Python, Redis Streams, and PostgreSQL',
+      'Custom anomaly detection models evaluating order book volatility in real time',
+      'Automated morning email and Slack digest generator powered by structured LLM prompts',
+    ],
+    outcomes: [
+      'Saved investment analysts an estimated 4 hours of manual data collation every morning',
+      'Cut executive report preparation overhead by 62% across the firm',
+      'Processes over 1.2 million market ticks daily with zero queue bottlenecks',
+    ],
     tags: ['AI/ML', 'Python', 'Live Data'],
     category: 'a',
     previewType: 'ai-telemetry',
@@ -147,6 +202,8 @@ export const PROJECTS: ProjectItem[] = [
       author: 'Tayyab R.',
       role: 'Founder',
       company: 'Alpha',
+      signature: 'Tayyab R.',
+      tilt: 1.2,
     },
   },
   {
@@ -155,6 +212,17 @@ export const PROJECTS: ProjectItem[] = [
     client: 'Wilson International',
     clientMeta: 'Wilson International • Logistics & Finance',
     desc: 'Centralized sales operations platform combining enterprise CRM data, automated invoices, and financial reporting in one view.',
+    fullDesc: 'Consolidated three disjointed legacy systems into a single React-based operations console, automating international currency conversions, automated invoice delivery, and cross-border billing reconciliation.',
+    scope: [
+      'Multi-currency ledger architecture with automated tax and tariff calculation rules',
+      'Custom ETL data synchronization workers bridging legacy ERP and modern web UI',
+      'Role-based access control protecting enterprise financial statements and audits',
+    ],
+    outcomes: [
+      'Consolidated 3 legacy platforms into a unified single-pane operational view',
+      'Reduced weekly invoice reconciliation time from 3 business days to 15 minutes',
+      'Handled over $148,000 in monthly transaction volume with zero discrepancies',
+    ],
     tags: ['Data Pipelines', 'React', 'Cloud'],
     category: 'a',
     previewType: 'sales-funnel',
@@ -164,6 +232,8 @@ export const PROJECTS: ProjectItem[] = [
       author: 'Wilson T.',
       role: 'VP of Operations',
       company: 'Wilson International',
+      signature: 'Wilson T.',
+      tilt: -1.0,
     },
   },
   {
@@ -172,6 +242,17 @@ export const PROJECTS: ProjectItem[] = [
     client: 'Bao Logistics',
     clientMeta: 'Bao Logistics • Supply Chain & Inventory',
     desc: 'Operations management system handling multi-facility inventory tracking, staff scheduling, and two-tier approval chains.',
+    fullDesc: 'Engineered an internal warehouse logistics portal for tracking multi-facility inventory balances, automated reorder thresholds, and role-based staff dispatch workflows.',
+    scope: [
+      'Relational schema architecture with ACID compliance for inventory item movements',
+      'Real-time barcode scanning integration via web camera and handheld Bluetooth scanners',
+      'Audit log trail recording every stock allocation, transfer, and manager approval',
+    ],
+    outcomes: [
+      'Eliminated stockout blindspots across 4 regional warehouse locations',
+      'Accelerated warehouse staff order intake processing speeds by 45%',
+      'Sub-20 millisecond database response times on queries exceeding 100k items',
+    ],
     tags: ['Full Stack', 'PostgreSQL', 'Admin'],
     category: 'w',
     previewType: 'inventory-matrix',
@@ -181,6 +262,8 @@ export const PROJECTS: ProjectItem[] = [
       author: 'Bao Bao L.',
       role: 'Head of Operations',
       company: 'Bao Logistics',
+      signature: 'Bao Bao L.',
+      tilt: 0.8,
     },
   },
   {
@@ -189,6 +272,17 @@ export const PROJECTS: ProjectItem[] = [
     client: 'Sissy Atelier',
     clientMeta: 'Sissy Atelier • Fashion Commerce',
     desc: 'Headless apparel storefront engineered for rapid checkout performance and a bespoke visual editorial design system.',
+    fullDesc: 'Designed and built a headless e-commerce storefront with server-side rendering, sub-second page transitions, and bespoke editorial layout transitions tailored for luxury fashion collections.',
+    scope: [
+      'Next.js headless front-end with edge caching and dynamic image optimization',
+      'Bespoke visual editorial design system reflecting luxury fashion aesthetics',
+      'Single-page checkout integration with Stripe and instant order receipt generation',
+    ],
+    outcomes: [
+      'Checkout funnel conversion increased by 34% in the first 30 days after launch',
+      'Achieved 98+ Google Lighthouse performance score across all catalog pages',
+      'Sub-second collection browsing experience on mobile devices',
+    ],
     tags: ['Next.js', 'UI/UX', 'Commerce'],
     category: 'w',
     previewType: 'luxury-store',
@@ -198,6 +292,8 @@ export const PROJECTS: ProjectItem[] = [
       author: 'Shivaji P.',
       role: 'Creative Director',
       company: 'Sissy Atelier',
+      signature: 'Shivaji P.',
+      tilt: -1.1,
     },
   },
   {
@@ -206,6 +302,17 @@ export const PROJECTS: ProjectItem[] = [
     client: 'LastofUs Gaming',
     clientMeta: 'LastofUs Gaming • Community & Companion Apps',
     desc: 'Community hub and real-time companion application featuring interactive lore maps and live player matchmaking telemetry.',
+    fullDesc: 'Built an interactive gaming community hub and companion web app featuring interactive vector maps, real-time player telemetry, and live match coordination for gaming clans.',
+    scope: [
+      'High-performance SVG vector map engine with pan, zoom, and dynamic pin filtering',
+      'WebSocket telemetry channel streaming live player status updates',
+      'Responsive mobile-first dark interface matching the game aesthetic',
+    ],
+    outcomes: [
+      'Over 12,400 concurrent community players during launch tournament events',
+      'Sub-50ms live coordinate sync across connected clan member screens',
+      'Zero downtime recorded across major international gaming tournaments',
+    ],
     tags: ['Web', 'Mobile Sync', 'App'],
     category: 'm',
     previewType: 'game-hud',
@@ -215,6 +322,8 @@ export const PROJECTS: ProjectItem[] = [
       author: 'Jett V.',
       role: 'Community Lead',
       company: 'LastofUs Gaming',
+      signature: 'Jett V.',
+      tilt: 0.9,
     },
   },
 ];

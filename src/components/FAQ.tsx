@@ -12,7 +12,10 @@ export const FAQ: React.FC = () => {
   return (
     <section className="site-section container-wide" id="faq">
       <div className="section-header">
-        <span className="section-eyebrow mono">FAQ</span>
+        <div className="section-eyebrow-row">
+          <span className="section-eyebrow mono">FAQ</span>
+          <span className="hw section-annotation">// clear terms, zero surprises</span>
+        </div>
         <h2 className="section-heading">Frequently asked questions.</h2>
         <p className="section-sub">
           Straightforward answers on timelines, code ownership, technical stacks, and post-launch maintenance.

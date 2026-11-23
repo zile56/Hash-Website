@@ -32,7 +32,10 @@ export const Contact: React.FC = () => {
   return (
     <section className="site-section container-wide" id="contact">
       <div className="section-header">
-        <span className="section-eyebrow mono">Get In Touch</span>
+        <div className="section-eyebrow-row">
+          <span className="section-eyebrow mono">Get In Touch</span>
+          <span className="hw section-annotation">// responses within 24 hours</span>
+        </div>
         <h2 className="section-heading">Let's build your software.</h2>
         <p className="section-sub">
           Book a free 30-minute technical consultation. Speak directly with our engineering team in Islamabad.
@@ -59,7 +62,7 @@ export const Contact: React.FC = () => {
               </div>
               <div className="contact-meta-content">
                 <span className="contact-meta-label mono">Working Hours</span>
-                <span className="contact-meta-val">Mon–Sat, 9:00 AM – 9:00 PM PKT</span>
+                <span className="contact-meta-val">Mon to Sat, 9:00 AM to 9:00 PM PKT</span>
               </div>
             </div>
 

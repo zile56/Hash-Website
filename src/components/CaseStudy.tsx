@@ -34,7 +34,10 @@ export const CaseStudy: React.FC = () => {
   return (
     <section className="site-section container-wide" id="cases" ref={sectionRef}>
       <div className="section-header">
-        <span className="section-eyebrow mono">Case Study</span>
+        <div className="section-eyebrow-row">
+          <span className="section-eyebrow mono">Case Study</span>
+          <span className="hw section-annotation">// measurable business impact</span>
+        </div>
         <h2 className="section-heading">Alpha Telemetry: Automated Market Engine.</h2>
       </div>
 

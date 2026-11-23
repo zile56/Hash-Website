@@ -1,28 +1,83 @@
-import React from 'react';
-import { ArrowUpRight, Check, Code2, Cpu, Database, ShieldCheck } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
-const DELIVERY_PILLARS = [
-  {
-    icon: Code2,
-    title: 'Web & Mobile Apps',
-    desc: 'High-performance cross-platform Flutter mobile apps and responsive React / Next.js web applications.',
-    tags: ['React', 'Next.js', 'Flutter'],
-  },
-  {
-    icon: Cpu,
-    title: 'AI Agents & Automation',
-    desc: 'Custom autonomous LLM agents, voice assistants, and operational workflows trained on business data.',
-    tags: ['Python', 'LangChain', 'FastAPI'],
-  },
-  {
-    icon: Database,
-    title: 'Data & Cloud Systems',
-    desc: 'Relational & vector databases, real-time telemetry dashboards, and scalable cloud architectures.',
-    tags: ['PostgreSQL', 'AWS', 'Docker'],
-  },
+const TASKS = [
+  'AI agent answering customer inquiries',
+  'Leads synced to PostgreSQL & CRM',
+  'Invoice reconciliation automated',
+  'Weekly production build deployed',
+  'Customer support tickets triaged',
+];
+
+const TRUST_POINTS = [
+  'Free 30-min consultation',
+  'Weekly working builds',
+  'Full IP and code ownership',
 ];
 
 export const Hero: React.FC = () => {
+  const [checkedCount, setCheckedCount] = useState<number>(0);
+  const padRef = useRef<HTMLDivElement>(null);
+
+  // Auto-checking sequential loop with visibility handling
+  useEffect(() => {
+    const reducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
+      setCheckedCount(TASKS.length);
+      return;
+    }
+
+    let count = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    const startTimer = () => {
+      if (timer || document.hidden) return;
+      timer = setInterval(() => {
+        count = (count + 1) % (TASKS.length + 1);
+        setCheckedCount(count);
+      }, 1200);
+    };
+
+    const stopTimer = () => {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    };
+
+    startTimer();
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopTimer();
+      } else {
+        startTimer();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      stopTimer();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  // 3D tilt interaction (desktop only)
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const reducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !padRef.current) return;
+    const rect = padRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    padRef.current.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+  };
+
+  const handlePointerLeave = () => {
+    if (!padRef.current) return;
+    padRef.current.style.transform = '';
+  };
+
   return (
     <section className="hero-section container-wide" id="top">
       <div className="hero-left">
@@ -32,11 +87,13 @@ export const Hero: React.FC = () => {
         </div>
 
         <h1 className="hero-title">
-          Custom software, mobile apps, and AI systems built for your business.
+          Automate the <s className="strike-reveal">busywork.</s>
+          <br />
+          <span className="hw">Keep the business.</span>
         </h1>
 
         <p className="hero-lead">
-          HASH Software Consultants designs, builds, and deploys production software for startups and growing companies. You get direct access to our engineers, weekly working builds, and full ownership of your source code.
+          HASH Software Consultants designs, builds, and deploys production software for startups and growing companies. We build custom web apps, mobile systems, and AI workflows that take the busywork off your team.
         </p>
 
         <div className="hero-cta-group">
@@ -48,66 +105,57 @@ export const Hero: React.FC = () => {
           </a>
         </div>
 
-        <div className="hero-trust-strip">
-          <div className="trust-item">
-            <Check size={14} className="trust-icon" />
-            <span>Free 30-minute consultation</span>
-          </div>
-          <span className="trust-divider" aria-hidden="true">•</span>
-          <div className="trust-item">
-            <Check size={14} className="trust-icon" />
-            <span>Weekly working builds</span>
-          </div>
-          <span className="trust-divider" aria-hidden="true">•</span>
-          <div className="trust-item">
-            <Check size={14} className="trust-icon" />
-            <span>Full source code ownership</span>
-          </div>
-        </div>
+        <ul className="hero-trust-list">
+          {TRUST_POINTS.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+          <li className="hw trust-hw-note">// direct engineer access</li>
+        </ul>
       </div>
 
-      <div className="hero-right">
-        <div className="architecture-card">
-          <div className="arch-header">
-            <div className="arch-header-left">
-              <span className="arch-status-dot" aria-hidden="true" />
-              <span className="arch-title">Engineering Delivery Model</span>
-            </div>
-            <span className="arch-badge mono">Production Ready</span>
+      <div
+        className="hero-pad-wrapper"
+        onPointerMove={handlePointerMove}
+        onPointerLeave={handlePointerLeave}
+      >
+        <div className="pad interactive-pad" ref={padRef}>
+          <span className="tag pad-tag live-badge">
+            <span className="live-dot" aria-hidden="true" /> live
+          </span>
+
+          <div className="pad-header-row">
+            <h3 className="pad-heading">Automation running</h3>
+            <span className="hw pad-subnote">// weekly client pipeline</span>
           </div>
 
-          <div className="arch-pillars">
-            {DELIVERY_PILLARS.map((pillar) => {
-              const IconComp = pillar.icon;
+          <ul className="pad-list">
+            {TASKS.map((task, idx) => {
+              const isDone = idx < checkedCount;
               return (
-                <div key={pillar.title} className="arch-pillar-item">
-                  <div className="pillar-icon-wrap">
-                    <IconComp size={18} />
+                <li key={task} className={isDone ? 'checked' : ''}>
+                  <div className="pad-checkbox" aria-hidden="true">
+                    {isDone ? '✓' : ''}
                   </div>
-                  <div className="pillar-content">
-                    <div className="pillar-header">
-                      <h4>{pillar.title}</h4>
-                    </div>
-                    <p>{pillar.desc}</p>
-                    <div className="pillar-tags">
-                      {pillar.tags.map((tag) => (
-                        <span key={tag} className="pillar-tag mono">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                  <span className="pad-task-label">{task}</span>
+                  <span className={`task-status-pill mono ${isDone ? 'done' : 'queued'}`}>
+                    {isDone ? 'automated' : 'queued'}
+                  </span>
+                </li>
               );
             })}
-          </div>
+          </ul>
 
-          <div className="arch-footer">
-            <div className="arch-spec-row">
-              <span className="spec-label">Core Stack:</span>
-              <span className="spec-values mono">React, Next.js, Flutter, Python, AWS, PostgreSQL</span>
+          <div className="pad-footer">
+            <div className="progress-bar-track">
+              <div
+                className="progress-bar-fill"
+                style={{ width: `${(checkedCount / TASKS.length) * 100}%` }}
+                aria-label={`${Math.round((checkedCount / TASKS.length) * 100)}% complete`}
+              />
             </div>
-            <div className="arch-guarantee-row">
-              <ShieldCheck size={15} className="guarantee-icon" />
-              <span>Full IP and Git repository transfer upon completion</span>
+            <div className="ft">
+              <span className="mono pad-counter">{checkedCount} of {TASKS.length} automated</span>
+              <div className="pen" aria-hidden="true" />
             </div>
           </div>
         </div>

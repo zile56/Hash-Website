@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
             <span className="footer-col-header mono">Engineering Office</span>
             <p className="footer-office-text">
               F-6/1, Islamabad, Pakistan<br />
-              Mon–Sat, 9:00 AM – 9:00 PM PKT
+              Mon to Sat, 9:00 AM to 9:00 PM PKT
             </p>
             <a href="mailto:contact@hash.org" className="footer-email-link mono">
               contact@hash.org
