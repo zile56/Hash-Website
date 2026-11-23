@@ -48,7 +48,7 @@ export const Navbar: React.FC = () => {
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-inner container-wide">
-        <a className="brand-logo-link" href="#top" aria-label="HASH Software Consultants Home">
+        <a className="brand-logo-link" href="#top" aria-label="HASH Home">
           <img
             src="/hash-logo.png"
             alt="HASH Logo"
@@ -56,10 +56,6 @@ export const Navbar: React.FC = () => {
             width="38"
             height="38"
           />
-          <div className="brand-logo-text">
-            <span className="brand-name">HASH</span>
-            <span className="brand-tagline">SOFTWARE CONSULTANTS</span>
-          </div>
         </a>
 
         <nav className="desktop-nav" aria-label="Main Navigation">

@@ -5,10 +5,7 @@ export const Industries: React.FC = () => {
   return (
     <section className="site-section container-wide" id="industries">
       <div className="section-header">
-        <div className="section-eyebrow-row">
-          <span className="section-eyebrow mono">Domain Expertise</span>
-          <span className="hw section-annotation">// tailored technical architectures</span>
-        </div>
+        <span className="section-eyebrow mono">Domain Expertise</span>
         <h2 className="section-heading">Industries and solutions we build for.</h2>
         <p className="section-sub">
           Proven architecture patterns adapted to the operational requirements of your sector.

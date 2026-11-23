@@ -26,10 +26,7 @@ export const Services: React.FC = () => {
   return (
     <section className="site-section container-wide" id="services">
       <div className="section-header">
-        <div className="section-eyebrow-row">
-          <span className="section-eyebrow mono">Capabilities</span>
-          <span className="hw section-annotation">// full lifecycle delivery</span>
-        </div>
+        <span className="section-eyebrow mono">Capabilities</span>
         <h2 className="section-heading">Engineered for production scale.</h2>
         <p className="section-sub">
           From first prototype to production release, our engineers cover every layer of modern software development.

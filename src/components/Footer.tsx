@@ -29,7 +29,6 @@ export const Footer: React.FC = () => {
             <ul className="footer-links-list">
               <li><a href="#services">Services &amp; Capabilities</a></li>
               <li><a href="#work">Featured Projects</a></li>
-              <li><a href="#cases">Alpha Case Study</a></li>
               <li><a href="#about">About HASH</a></li>
               <li><a href="#team">Engineering Team</a></li>
               <li><a href="#careers">Open Roles</a></li>
@@ -38,17 +37,9 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Right: Contact & Verification */}
+          {/* Right: Connect Profiles */}
           <div className="footer-col-contact">
-            <span className="footer-col-header mono">Engineering Office</span>
-            <p className="footer-office-text">
-              F-6/1, Islamabad, Pakistan<br />
-              Mon to Sat, 9:00 AM to 9:00 PM PKT
-            </p>
-            <a href="mailto:contact@hash.org" className="footer-email-link mono">
-              contact@hash.org
-            </a>
-
+            <span className="footer-col-header mono">Connect</span>
             <div className="footer-social-row">
               <a
                 href="https://www.linkedin.com/company/hashconsultants"

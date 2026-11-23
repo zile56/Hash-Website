@@ -19,10 +19,7 @@ export const About: React.FC = () => {
   return (
     <section className="site-section container-wide" id="about">
       <div className="section-header">
-        <div className="section-eyebrow-row">
-          <span className="section-eyebrow mono">About HASH</span>
-          <span className="hw section-annotation">// based in Islamabad, Pakistan</span>
-        </div>
+        <span className="section-eyebrow mono">About HASH</span>
         <h2 className="section-heading">Custom software engineered with discipline.</h2>
         <p className="section-sub">
           An Islamabad-based team delivering production-grade engineering for startups and scaling businesses worldwide.

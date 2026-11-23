@@ -5,10 +5,7 @@ export const Process: React.FC = () => {
   return (
     <section className="site-section container-wide" id="process">
       <div className="section-header">
-        <div className="section-eyebrow-row">
-          <span className="section-eyebrow mono">Delivery Process</span>
-          <span className="hw section-annotation">// weekly staging deployments</span>
-        </div>
+        <span className="section-eyebrow mono">Delivery Process</span>
         <h2 className="section-heading">How we build and ship software.</h2>
         <p className="section-sub">
           A disciplined, five-step delivery cadence with weekly working builds and full transparency.

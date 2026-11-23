@@ -109,7 +109,6 @@ export const Hero: React.FC = () => {
           {TRUST_POINTS.map((point) => (
             <li key={point}>{point}</li>
           ))}
-          <li className="hw trust-hw-note">// direct engineer access</li>
         </ul>
       </div>
 
@@ -125,7 +124,6 @@ export const Hero: React.FC = () => {
 
           <div className="pad-header-row">
             <h3 className="pad-heading">Automation running</h3>
-            <span className="hw pad-subnote">// weekly client pipeline</span>
           </div>
 
           <ul className="pad-list">

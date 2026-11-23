@@ -8,7 +8,6 @@ import { Marquee } from './components/Marquee';
 import { Services } from './components/Services';
 import { Stats } from './components/Stats';
 import { Work } from './components/Work';
-import { CaseStudy } from './components/CaseStudy';
 import { Process } from './components/Process';
 import { Industries } from './components/Industries';
 import { About } from './components/About';
@@ -83,7 +82,6 @@ export const App: React.FC = () => {
         <Services />
         <Stats />
         <Work />
-        <CaseStudy />
         <Process />
         <Industries />
         <About />
