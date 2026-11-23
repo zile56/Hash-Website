@@ -6,7 +6,6 @@ export const Team: React.FC = () => {
   return (
     <section className="site-section container-wide" id="team">
       <div className="section-header">
-        <span className="section-eyebrow mono">Leadership</span>
         <h2 className="section-heading">The engineering team building your software.</h2>
         <p className="section-sub">
           Direct collaboration with the technical leads who architect and write your production code.

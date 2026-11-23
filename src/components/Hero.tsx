@@ -81,11 +81,6 @@ export const Hero: React.FC = () => {
   return (
     <section className="hero-section container-wide" id="top">
       <div className="hero-left">
-        <div className="consultancy-badge">
-          <span className="badge-dot" aria-hidden="true" />
-          <span>Islamabad Software &amp; AI Engineering Consultancy</span>
-        </div>
-
         <h1 className="hero-title">
           Automate the <s className="strike-reveal">busywork.</s>
           <br />

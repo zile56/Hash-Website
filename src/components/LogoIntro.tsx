@@ -162,12 +162,6 @@ export const LogoIntro: React.FC = () => {
           className="logo-intro-img"
           style={{ opacity: isDocking ? 1 : 0 }}
         />
-
-        {/* Clean luminous settle pulse beat */}
-        <div
-          className={`logo-lockin-bloom ${isLocking ? 'logo-lockin-bloom--active' : ''}`}
-          aria-hidden="true"
-        />
       </div>
     </div>
   );

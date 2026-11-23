@@ -32,7 +32,6 @@ export const Contact: React.FC = () => {
   return (
     <section className="site-section container-wide" id="contact">
       <div className="section-header">
-        <span className="section-eyebrow mono">Get In Touch</span>
         <h2 className="section-heading">Let's build your software.</h2>
         <p className="section-sub">
           Book a free 30-minute technical consultation. Speak directly with our engineering team in Islamabad.

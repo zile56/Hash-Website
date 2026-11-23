@@ -18,7 +18,6 @@ export const Work: React.FC = () => {
   return (
     <section className="site-section container-wide" id="work">
       <div className="section-header">
-        <span className="section-eyebrow mono">Featured Work</span>
         <h2 className="section-heading">Production systems shipped for clients.</h2>
         <p className="section-sub">
           Cross-platform mobile apps, web applications, and AI pipelines engineered for founders and scaling teams. Click any project to inspect technical architecture, scope, and verified reviews.
@@ -40,7 +39,7 @@ export const Work: React.FC = () => {
         ))}
       </div>
 
-      {/* Compact Minimal 2-Column Project Grid */}
+      {/* 2-Column Project Grid with Clean Image Container */}
       <div className="compact-project-grid">
         {filteredProjects.map((project: ProjectItem) => {
           const categoryLabel = project.category === 'm' ? 'Mobile App' : project.category === 'w' ? 'Web Platform' : 'AI & Data';
@@ -60,13 +59,24 @@ export const Work: React.FC = () => {
               }}
               aria-label={`View ${project.title} project details`}
             >
-              <div className="compact-card-body">
-                <span className="compact-card-category mono">{categoryLabel}</span>
-                <h3 className="compact-card-title">{project.title}</h3>
+              {/* Clean Image Container (aspect-[16/10]) */}
+              <div className="project-card-image-wrap" aria-hidden="true">
+                <div className="th">
+                  <i />
+                  <b />
+                  <u />
+                </div>
               </div>
 
-              <div className="compact-card-action">
-                <ArrowUpRight size={18} className="compact-card-arrow" />
+              <div className="compact-card-footer">
+                <div className="compact-card-body">
+                  <span className="compact-card-category mono">{categoryLabel}</span>
+                  <h3 className="compact-card-title">{project.title}</h3>
+                </div>
+
+                <div className="compact-card-action">
+                  <ArrowUpRight size={18} className="compact-card-arrow" />
+                </div>
               </div>
             </article>
           );

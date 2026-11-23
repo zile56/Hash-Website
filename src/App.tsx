@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Background } from './components/Background';
-import { CursorGlow } from './components/CursorGlow';
-import { ScrollProgress } from './components/ScrollProgress';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Marquee } from './components/Marquee';
@@ -19,19 +17,22 @@ import { Footer } from './components/Footer';
 import { LogoIntro } from './components/LogoIntro';
 
 export const App: React.FC = () => {
+  const [showUp, setShowUp] = useState(false);
+
   useEffect(() => {
     const reducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Frame-batched scroll listener for background parallax
+    // Frame-batched scroll listener for background parallax and scroll-up button
     let scrollFrame = 0;
     const bg = document.querySelector('.bg') as HTMLElement | null;
     const updateScroll = () => {
+      const y = window.scrollY;
       if (!reducedMotion && bg) {
-        const y = window.scrollY;
         const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
         const progress = Math.min(1, Math.max(0, y / max));
         bg.style.setProperty('--p', progress.toFixed(4));
       }
+      setShowUp(y > 600);
       scrollFrame = 0;
     };
 
@@ -68,12 +69,14 @@ export const App: React.FC = () => {
     };
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="site-wrapper">
       <LogoIntro />
       <Background />
-      <CursorGlow />
-      <ScrollProgress />
       <Navbar />
 
       <main>
@@ -92,6 +95,16 @@ export const App: React.FC = () => {
       </main>
 
       <Footer />
+
+      {/* Circular Scroll-Up Button (#up) */}
+      <button
+        id="up"
+        className={showUp ? 'v' : ''}
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+      >
+        ↑
+      </button>
     </div>
   );
 };
