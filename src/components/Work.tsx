@@ -57,13 +57,18 @@ export const Work: React.FC = () => {
             }}
             aria-label={`View ${project.title} project details`}
           >
+            <div className="compact-card-top">
+              <span className="compact-card-category">
+                {project.category === 'm' ? 'Mobile app' : project.category === 'w' ? 'Web platform' : 'AI and data'}
+              </span>
+              <div className="compact-card-action" aria-hidden="true">
+                <ArrowUpRight size={18} className="compact-card-arrow" />
+              </div>
+            </div>
+
             <div className="compact-card-info">
               <h3 className="compact-card-title">{project.title}</h3>
               <p className="compact-card-subtitle">{project.subtitle}</p>
-            </div>
-
-            <div className="compact-card-action" aria-hidden="true">
-              <ArrowUpRight size={18} className="compact-card-arrow" />
             </div>
           </article>
         ))}
