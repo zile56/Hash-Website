@@ -258,24 +258,18 @@ body.intro-active .pl {
 
 .container-wide {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1720px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.25rem; /* 20px */
-  padding-right: 1.25rem;
+  padding-left: 1.5rem; /* px-6 */
+  padding-right: 1.5rem;
+  box-sizing: border-box;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .container-wide {
-    padding-left: 2rem; /* 32px */
-    padding-right: 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container-wide {
-    padding-left: 3.5rem; /* 56px */
-    padding-right: 3.5rem;
+    padding-left: 2.5rem; /* md:px-10 */
+    padding-right: 2.5rem;
   }
 }
 
@@ -345,14 +339,14 @@ body.intro-active .pl {
   line-height: 1.12;
   letter-spacing: -0.03em;
   color: var(--fg);
-  max-width: 24ch;
+  max-width: 32ch;
 }
 
 .section-sub {
   font-size: clamp(15px, 1.1vw, 17px);
   color: var(--mut);
   line-height: 1.6;
-  max-width: 60ch;
+  max-width: 42rem;
   margin-top: 14px;
 }
 
