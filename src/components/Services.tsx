@@ -43,6 +43,14 @@ export const Services: React.FC = () => {
 
     const updateScales = () => {
       rafId = 0;
+      const isDesktop = window.innerWidth >= 768;
+      if (!isDesktop) {
+        for (let i = 0; i < cards.length; i++) {
+          cards[i].style.transform = '';
+        }
+        return;
+      }
+
       const vh = window.innerHeight || 900;
       const startY = vh * 0.82;
       const endY = vh * 0.22;
@@ -82,8 +90,8 @@ export const Services: React.FC = () => {
             From first wireframe to production deployment, our team handles the full stack.
           </p>
           <div className="svc-cta-wrap">
-            <a className="btn-primary" href="#contact">
-              Start a project <ArrowUpRight size={16} />
+            <a className="btn-secondary" href="#work">
+              Explore our work <ArrowUpRight size={16} />
             </a>
           </div>
         </div>

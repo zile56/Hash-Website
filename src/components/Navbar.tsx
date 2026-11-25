@@ -100,7 +100,7 @@ export const Navbar: React.FC = () => {
             ))}
             <a
               href="#contact"
-              className="btn-primary"
+              className="btn-primary mobile-drawer-cta"
               style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
               onClick={handleLinkClick}
             >

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { CAREER_ROLES } from '../data/siteData';
+import { CVModal } from './CVModal';
 
 export const Careers: React.FC = () => {
+  const [cvModalOpen, setCvModalOpen] = useState(false);
+
   return (
     <section className="site-section" id="careers">
       <div className="container-wide">
@@ -24,12 +27,18 @@ export const Careers: React.FC = () => {
           </div>
 
           <div className="careers-cta-row">
-            <a className="btn-primary" href="#contact">
+            <button
+              type="button"
+              className="btn-primary"
+              onClick={() => setCvModalOpen(true)}
+            >
               Send your CV <ArrowUpRight size={16} />
-            </a>
+            </button>
           </div>
         </div>
       </div>
+
+      <CVModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, ArrowUpRight, CheckCircle2, Award } from 'lucide-react';
 import { ProjectItem } from '../data/siteData';
 import { ProjectPreview } from './ProjectPreview';
@@ -34,7 +35,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
   if (!project) return null;
 
-  return (
+  return createPortal(
     <div
       className="project-modal-backdrop"
       onClick={onClose}
@@ -151,6 +152,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

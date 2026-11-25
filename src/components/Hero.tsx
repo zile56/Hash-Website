@@ -93,7 +93,7 @@ export const Hero: React.FC = () => {
 
         <div className="hero-cta-group">
           <a className="btn-primary" href="#contact">
-            Start a project <ArrowUpRight size={17} />
+            Book a 30-min call <ArrowUpRight size={17} />
           </a>
           <a className="btn-secondary" href="#work">
             View our work

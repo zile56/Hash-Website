@@ -37,7 +37,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ type }) => {
 
     case 'carpool-map':
       return (
-        <div className="preview-canvas preview-copool">
+        <div className="preview-canvas preview-yaozay">
           <div className="preview-header-bar">
             <span className="preview-pill"><MapPin size={12} /> Route Optimizer</span>
             <span className="preview-pill-tag">Automated Fare</span>
@@ -56,28 +56,28 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ type }) => {
 
     case 'prayer-compass':
       return (
-        <div className="preview-canvas preview-namaz">
+        <div className="preview-canvas preview-qaza">
           <div className="preview-header-bar">
-            <span className="preview-pill"><Compass size={12} /> Qibla Radar</span>
-            <span className="preview-pill-tag">Offline Sensor</span>
+            <span className="preview-pill"><Compass size={12} /> Qaza Tracker</span>
+            <span className="preview-pill-tag">100% Offline Room DB</span>
           </div>
           <div className="preview-compass-dial">
             <div className="compass-needle" />
             <div className="compass-core" />
           </div>
           <div className="preview-streak-badge">
-            <span>🔥 42 Day Streak</span>
-            <span style={{ color: 'var(--mut)', fontSize: '11px' }}>Next: Maghrib in 28m</span>
+            <span>42 Day Streak</span>
+            <span style={{ color: 'var(--mut)', fontSize: '11px' }}>Widget Logged · v1.1.4</span>
           </div>
         </div>
       );
 
     case 'ai-telemetry':
       return (
-        <div className="preview-canvas preview-alpha">
+        <div className="preview-canvas preview-alpha-physio">
           <div className="preview-header-bar">
-            <span className="preview-pill"><TrendingUp size={12} /> AI Market Feed</span>
-            <span className="preview-pill-live">● Anomaly Detection</span>
+            <span className="preview-pill"><TrendingUp size={12} /> Clinical Telemetry</span>
+            <span className="preview-pill-live">● Live Briefs</span>
           </div>
           <div className="preview-sparkline-box">
             <svg viewBox="0 0 160 40" className="preview-sparkline-svg">
@@ -98,10 +98,10 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ type }) => {
 
     case 'sales-funnel':
       return (
-        <div className="preview-canvas preview-wilson">
+        <div className="preview-canvas preview-oscill">
           <div className="preview-header-bar">
-            <span className="preview-pill"><BarChart2 size={12} /> Revenue Console</span>
-            <span className="preview-pill-tag">CRM Sync</span>
+            <span className="preview-pill"><BarChart2 size={12} /> Identity Synthesis</span>
+            <span className="preview-pill-tag">Embeddings + OpenAI</span>
           </div>
           <div className="preview-bars-row">
             <div className="mini-bar-col"><span style={{ height: '45%' }} /></div>
@@ -111,8 +111,8 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({ type }) => {
             <div className="mini-bar-col"><span style={{ height: '65%' }} /></div>
           </div>
           <div className="preview-stat-row">
-            <span>$148.2k Monthly Invoiced</span>
-            <span className="telemetry-pill">99.8% Match</span>
+            <span>Evolution Timeline Active</span>
+            <span className="telemetry-pill">Guardrailed AI Chat</span>
           </div>
         </div>
       );

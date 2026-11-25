@@ -82,12 +82,12 @@ export const Contact: React.FC = () => {
                 <span className="contact-meta-label mono">Verified Profiles</span>
                 <div className="contact-social-links">
                   <a
-                    href="https://www.linkedin.com/company/hashconsultants"
+                    href="https://www.linkedin.com/company/hash-sw/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-tag mono"
                   >
-                    LinkedIn @hashconsultants
+                    LinkedIn @hash-sw
                   </a>
                   <a
                     href="https://github.com/hashconsultants"
