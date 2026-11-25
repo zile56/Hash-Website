@@ -62,20 +62,22 @@ export const Stats: React.FC = () => {
   };
 
   return (
-    <section className="stats-section container-wide" id="stats" ref={sectionRef}>
-      <div className="stats-strip-bar">
-        {STATS_DATA.map((stat, idx) => (
-          <div key={stat.label} className="stat-col">
-            <div className="stat-number-wrap">
-              <span className="stat-number">{counts[idx]}</span>
-              {stat.suffix && <span className="stat-suffix">{stat.suffix}</span>}
+    <section className="stats-section band-neon" id="stats" ref={sectionRef}>
+      <div className="container-wide">
+        <div className="stats-strip-bar">
+          {STATS_DATA.map((stat, idx) => (
+            <div key={stat.label} className="stat-col">
+              <div className="stat-number-wrap">
+                <span className="stat-number">{counts[idx]}</span>
+                {stat.suffix && <span className="stat-suffix">{stat.suffix}</span>}
+              </div>
+              <div className="stat-text">
+                <h4 className="stat-label">{stat.label}</h4>
+                <p className="stat-detail">{stat.detail}</p>
+              </div>
             </div>
-            <div className="stat-text">
-              <h4 className="stat-label">{stat.label}</h4>
-              <p className="stat-detail">{stat.detail}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

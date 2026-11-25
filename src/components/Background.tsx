@@ -12,18 +12,18 @@ export const Background: React.FC = () => {
       >
         <defs>
           <linearGradient id="circuitLine" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#aeb7c8" stopOpacity=".02" />
-            <stop offset=".5" stopColor="#dce3ef" stopOpacity=".25" />
-            <stop offset="1" stopColor="#fff" stopOpacity=".04" />
+            <stop offset="0" stopColor="#0DE59E" stopOpacity=".03" />
+            <stop offset=".5" stopColor="#9ecfc0" stopOpacity=".22" />
+            <stop offset="1" stopColor="#0DE59E" stopOpacity=".06" />
           </linearGradient>
           <linearGradient id="circuitPulse" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#fff" stopOpacity="0" />
-            <stop offset=".5" stopColor="#fff" stopOpacity=".98" />
-            <stop offset="1" stopColor="#c8d0df" stopOpacity="0" />
+            <stop offset="0" stopColor="#0DE59E" stopOpacity="0" />
+            <stop offset=".5" stopColor="#7CFFD4" stopOpacity=".92" />
+            <stop offset="1" stopColor="#0DE59E" stopOpacity="0" />
           </linearGradient>
           <radialGradient id="nodeGlow">
-            <stop offset="0" stopColor="#fff" stopOpacity=".32" />
-            <stop offset="1" stopColor="#fff" stopOpacity="0" />
+            <stop offset="0" stopColor="#0DE59E" stopOpacity=".36" />
+            <stop offset="1" stopColor="#0DE59E" stopOpacity="0" />
           </radialGradient>
         </defs>
         <g className="circuit-base">
