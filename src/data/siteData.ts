@@ -37,13 +37,13 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     iconName: 'Palette',
-    title: 'Graphics and Branding',
-    desc: 'Logos, visual identity systems, social media kits, and investor pitch decks that give your product a consistent look.',
+    title: 'Graphics & UI/UX Design',
+    desc: 'Modern UI/UX, clean app & website designs, plus logos, social media posts & posters that make your brand look premium.',
   },
   {
     iconName: 'Layout',
-    title: 'UI/UX Design',
-    desc: 'User flows, wireframes, and interactive Figma prototypes tested for clarity before a single line of production code is written.',
+    title: 'Digital Marketing & Brand Strategy',
+    desc: 'Meta Ads, brand optimization & growth strategies that turn views into customers and customers into sales.',
   },
 ];
 

@@ -155,7 +155,8 @@ export const Contact: React.FC = () => {
                 <option value="AI & Automation">AI Agents &amp; Workflow Automation</option>
                 <option value="Data & Analytics">Data Pipelines &amp; Live Dashboards</option>
                 <option value="Full-Stack Engineering">Full-Stack Cloud Engineering</option>
-                <option value="UI/UX Design">UI/UX Product Design &amp; Prototypes</option>
+                <option value="Graphics & UI/UX Design">Graphics &amp; UI/UX Design</option>
+                <option value="Digital Marketing & Brand Strategy">Digital Marketing &amp; Brand Strategy</option>
               </select>
             </div>
 
