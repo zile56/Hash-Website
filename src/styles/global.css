@@ -1174,20 +1174,23 @@ s.strike-reveal::after {
 
 .mq-track {
   display: flex;
-  gap: 60px;
   width: max-content;
-  animation: mq-scroll 38s linear infinite;
+  animation: mq-scroll 40s linear infinite;
   color: var(--sv);
   font-weight: 600;
-  font-size: 18px;
+  font-size: 17px;
   white-space: nowrap;
 }
 
-.mq.r .mq-track {
-  animation-direction: reverse;
-  color: var(--mut);
-  font-weight: 500;
-  font-size: 16px;
+.mq:hover .mq-track {
+  animation-play-state: paused;
+}
+
+.mq-group {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  padding-right: 56px;
 }
 
 .mq-label {
@@ -1988,57 +1991,71 @@ s.strike-reveal::after {
 }
 
 /* ==========================================================================
-   Industries (Wrapped Static Pill Grid - Zero Words Clipped)
+   Industries (Dual-Row Seamless Running Marquee Strip)
    ========================================================================== */
-.industries-pill-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+.industries-mq-wrapper {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-@media (min-width: 640px) {
-  .industries-pill-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
+.ind-mq {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-@media (min-width: 1024px) {
-  .industries-pill-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
-  }
+.ind-mq-track {
+  display: flex;
+  width: max-content;
+  animation: mq-scroll 42s linear infinite;
+  will-change: transform;
 }
 
-.industry-pill {
+.ind-mq.r .ind-mq-track {
+  animation-direction: reverse;
+  animation-duration: 46s;
+}
+
+.ind-mq:hover .ind-mq-track {
+  animation-play-state: paused;
+}
+
+.ind-mq-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-right: 14px;
+}
+
+.ind-mq-pill {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  background: var(--surface);
-  border: 1px solid var(--ln);
+  gap: 10px;
+  background-color: #12141a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
-  padding: 10px 14px;
-  font-size: 13px;
-  color: var(--lead);
-  transition: border-color 0.15s ease, background-color 0.15s ease;
-  width: 100%;
-  min-width: 0;
-  overflow: hidden;
-  overflow-wrap: break-word;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #cbd1dc;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-@media (min-width: 640px) {
-  .industry-pill {
-    gap: 10px;
-    padding: 12px 20px;
-    font-size: 14px;
+.ind-mq-pill:hover {
+  border-color: rgba(255, 255, 255, 0.26);
+  background-color: #181b22;
+  color: #f4f5f8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ind-mq-track {
+    animation: none !important;
   }
-}
-
-.industry-pill:hover {
-  border-color: var(--ln-hover);
-  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .industry-pill-dot {
