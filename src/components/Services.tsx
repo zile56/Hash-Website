@@ -74,7 +74,7 @@ export const Services: React.FC = () => {
   }, []);
 
   return (
-    <section className="site-section band-cream" id="services">
+    <section className="site-section" id="services">
       <div className="container-wide svc-grid">
         <div className="svc-left">
           <h2 className="section-heading">What we build.</h2>
@@ -82,7 +82,7 @@ export const Services: React.FC = () => {
             From first wireframe to production deployment, our team handles the full stack.
           </p>
           <div className="svc-cta-wrap">
-            <a className="btn-dark-pill" href="#contact">
+            <a className="btn-primary" href="#contact">
               Start a project <ArrowUpRight size={16} />
             </a>
           </div>
@@ -91,7 +91,7 @@ export const Services: React.FC = () => {
         <div className="svc-stack" ref={stackRef}>
           {SERVICES.map((service: ServiceItem, idx: number) => {
             const IconComponent = iconMap[service.iconName];
-            const cardTone = idx % 2 === 1 ? 'svc-card--green' : 'svc-card--dark';
+            const cardTone = idx % 2 === 1 ? 'svc-card--alt' : 'svc-card--dark';
             return (
               <article
                 key={service.title}

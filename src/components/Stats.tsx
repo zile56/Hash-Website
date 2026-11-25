@@ -62,7 +62,7 @@ export const Stats: React.FC = () => {
   };
 
   return (
-    <section className="stats-section band-neon" id="stats" ref={sectionRef}>
+    <section className="stats-section" id="stats" ref={sectionRef}>
       <div className="container-wide">
         <div className="stats-strip-bar">
           {STATS_DATA.map((stat, idx) => (

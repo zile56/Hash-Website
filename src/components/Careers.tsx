@@ -4,7 +4,7 @@ import { CAREER_ROLES } from '../data/siteData';
 
 export const Careers: React.FC = () => {
   return (
-    <section className="site-section band-mint" id="careers">
+    <section className="site-section" id="careers">
       <div className="container-wide">
         <div className="careers-box">
           <div className="careers-header">

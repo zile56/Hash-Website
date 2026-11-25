@@ -10,7 +10,7 @@ export const FAQ: React.FC = () => {
   };
 
   return (
-    <section className="site-section band-cream" id="faq">
+    <section className="site-section" id="faq">
       <div className="container-wide">
         <div className="section-header">
           <h2 className="section-heading">Frequently asked questions.</h2>

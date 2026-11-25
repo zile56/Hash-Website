@@ -3,7 +3,7 @@ import { PROCESS_STEPS } from '../data/siteData';
 
 export const Process: React.FC = () => {
   return (
-    <section className="site-section band-mint" id="process">
+    <section className="site-section" id="process">
       <div className="container-wide">
         <div className="section-header">
           <h2 className="section-heading">How we work.</h2>

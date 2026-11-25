@@ -3,7 +3,7 @@ import { TARGET_INDUSTRIES } from '../data/siteData';
 
 export const Industries: React.FC = () => {
   return (
-    <section className="site-section band-cream" id="industries">
+    <section className="site-section" id="industries">
       <div className="container-wide">
         <div className="section-header">
           <h2 className="section-heading">Industries we build for.</h2>

@@ -1,27 +1,15 @@
 :root {
-  /* Reference Palette Tokens (hanglobal-concept) */
-  --neon: #0DE59E;
-  --ink: #0A0D0C;
-  --ink2: #131817;
-  --forest: #14775A;
-  --teal: #0F3F3F;
-  --cream: #FBFCEF;
-  --mint: #D3F0DF;
-  --light-text: #1B2623;
-  --light-muted: #3a4944;
-  --light-ln: rgba(15, 63, 63, 0.14);
-  --light-ln-hover: rgba(15, 63, 63, 0.28);
-
-  --bg: #0A0D0C;
-  --surface: #131817;
-  --cd: rgba(19, 24, 23, 0.84);
-  --fg: #f4f7f5;
-  --lead: #dfe7e3;
-  --mut: #9db0a8;
-  --sv: #cbd7d1;
+  --bg: #07080b;
+  --surface: #12141a;
+  --surface-alt: #181b22;
+  --cd: rgba(18, 20, 26, 0.84);
+  --fg: #f4f5f8;
+  --lead: #e4e7ee;
+  --mut: #9ba2ae;
+  --sv: #cbd1dc;
   --sv-bright: #ffffff;
-  --ln: rgba(211, 240, 223, 0.13);
-  --ln-hover: rgba(13, 229, 158, 0.34);
+  --ln: rgba(255, 255, 255, 0.1);
+  --ln-hover: rgba(255, 255, 255, 0.24);
 
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
