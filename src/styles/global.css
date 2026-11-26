@@ -1409,13 +1409,13 @@ s.strike-reveal::after {
 .compact-project-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 24px;
 }
 
 @media (min-width: 768px) {
   .compact-project-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 24px;
   }
 }
 

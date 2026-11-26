@@ -1,20 +1,21 @@
 import React, { useState, useCallback } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { PROJECTS, WORK_FILTERS, ProjectItem } from '../data/siteData';
+import { PROJECTS, ProjectItem } from '../data/siteData';
 import { ProjectModal } from './ProjectModal';
 import { navigateTo } from '../utils/navigation';
 
+const FEATURED_PROJECT_IDS = ['oscill', 'qaza-tracker', 'circlo', 'alpha-physiotherapy'];
+
 export const Work: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<string>('*');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   const handleCloseModal = useCallback(() => {
     setSelectedProject(null);
   }, []);
 
-  const filteredProjects = activeFilter === '*'
-    ? PROJECTS
-    : PROJECTS.filter((p) => p.category === activeFilter);
+  const featuredProjects = FEATURED_PROJECT_IDS
+    .map((id) => PROJECTS.find((p) => p.id === id))
+    .filter((p): p is ProjectItem => Boolean(p));
 
   return (
     <section className="site-section container-wide" id="work">
@@ -25,24 +26,9 @@ export const Work: React.FC = () => {
         </p>
       </div>
 
-      {/* Filter Tabs */}
-      <div className="work-filters" role="tablist" aria-label="Project Categories">
-        {WORK_FILTERS.map((filter) => (
-          <button
-            key={filter.key}
-            role="tab"
-            aria-selected={activeFilter === filter.key}
-            className={`filter-btn ${activeFilter === filter.key ? 'active' : ''}`}
-            onClick={() => setActiveFilter(filter.key)}
-          >
-            {filter.label}
-          </button>
-        ))}
-      </div>
-
-      {/* 2-Column Scannable Project Grid */}
+      {/* 2x2 Featured Project Grid */}
       <div className="compact-project-grid">
-        {filteredProjects.map((project: ProjectItem) => (
+        {featuredProjects.map((project: ProjectItem) => (
           <article
             key={project.id}
             className="compact-project-card"
@@ -87,7 +73,7 @@ export const Work: React.FC = () => {
           className="btn-secondary"
           onClick={(e) => navigateTo('/work', e)}
         >
-          View all work &amp; case studies <ArrowUpRight size={16} />
+          See more <ArrowUpRight size={16} />
         </a>
       </div>
     </section>
