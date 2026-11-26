@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { navigateTo } from '../utils/navigation';
 
 const NAV_LINKS = [
-  { href: '#services', label: 'Services' },
-  { href: '#work', label: 'Work' },
-  { href: '#about', label: 'About' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#services', sectionId: 'services', label: 'Services' },
+  { href: '/#work', sectionId: 'work', label: 'Work' },
+  { href: '/#about', sectionId: 'about', label: 'About' },
+  { href: '/#faq', sectionId: 'faq', label: 'FAQ' },
+  { href: '/contact', sectionId: 'contact-page', label: 'Contact' },
 ];
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  currentPath: string;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
@@ -24,6 +29,11 @@ export const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    if (currentPath !== '/') {
+      setActiveSection('');
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -39,16 +49,27 @@ export const Navbar: React.FC = () => {
     sections.forEach((sec) => observer.observe(sec));
 
     return () => observer.disconnect();
-  }, []);
+  }, [currentPath]);
 
-  const handleLinkClick = () => {
+  const handleNavClick = (href: string, e: React.MouseEvent) => {
     setMobileMenuOpen(false);
+    navigateTo(href, e);
+  };
+
+  const isLinkActive = (link: { href: string; sectionId: string }) => {
+    if (link.href === '/contact') return currentPath === '/contact';
+    return currentPath === '/' && activeSection === link.sectionId;
   };
 
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-inner container-wide">
-        <a className="brand-logo-link" href="#top" aria-label="HASH Home">
+        <a
+          className="brand-logo-link"
+          href="/"
+          aria-label="HASH Home"
+          onClick={(e) => handleNavClick('/', e)}
+        >
           <img
             src="/hash-logo.png"
             alt="HASH Logo"
@@ -61,7 +82,8 @@ export const Navbar: React.FC = () => {
             <a
               key={link.href}
               href={link.href}
-              className={`nav-link ${activeSection === link.href.slice(1) ? 'active' : ''}`}
+              className={`nav-link ${isLinkActive(link) ? 'active' : ''}`}
+              onClick={(e) => handleNavClick(link.href, e)}
             >
               {link.label}
             </a>
@@ -69,7 +91,11 @@ export const Navbar: React.FC = () => {
         </nav>
 
         <div className="header-actions">
-          <a href="#contact" className="btn-cta-nav">
+          <a
+            href="/contact"
+            className="btn-cta-nav"
+            onClick={(e) => handleNavClick('/contact', e)}
+          >
             Start a project <ArrowUpRight size={15} />
           </a>
 
@@ -92,17 +118,17 @@ export const Navbar: React.FC = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className={`mobile-nav-link ${activeSection === link.href.slice(1) ? 'active' : ''}`}
-                onClick={handleLinkClick}
+                className={`mobile-nav-link ${isLinkActive(link) ? 'active' : ''}`}
+                onClick={(e) => handleNavClick(link.href, e)}
               >
                 {link.label}
               </a>
             ))}
             <a
-              href="#contact"
+              href="/contact"
               className="btn-primary mobile-drawer-cta"
               style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
-              onClick={handleLinkClick}
+              onClick={(e) => handleNavClick('/contact', e)}
             >
               Start a project <ArrowUpRight size={16} />
             </a>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { navigateTo } from '../utils/navigation';
 
 const TASKS = [
   'AI agent answering customer inquiries',
@@ -92,7 +93,11 @@ export const Hero: React.FC = () => {
         </p>
 
         <div className="hero-cta-group">
-          <a className="btn-primary" href="#contact">
+          <a
+            className="btn-primary"
+            href="/book"
+            onClick={(e) => navigateTo('/book', e)}
+          >
             Book a 30-min call <ArrowUpRight size={17} />
           </a>
           <a className="btn-secondary" href="#work">

@@ -1,5 +1,5 @@
 export interface ServiceItem {
-  iconName: 'Brain' | 'BarChart3' | 'Globe' | 'Smartphone' | 'Layers' | 'Server' | 'Palette' | 'Layout';
+  iconName: 'Brain' | 'BarChart3' | 'Globe' | 'Smartphone' | 'Layers' | 'Server' | 'Cloud' | 'Palette' | 'Layout';
   title: string;
   desc: string;
 }
@@ -34,6 +34,11 @@ export const SERVICES: ServiceItem[] = [
     iconName: 'Server',
     title: 'Full-Stack Engineering',
     desc: 'Backend APIs, relational and vector databases, authentication systems, and internal admin panels engineered to handle real traffic.',
+  },
+  {
+    iconName: 'Cloud',
+    title: 'Cloud Services',
+    desc: 'Scalable cloud architecture, CI/CD pipelines, Docker deployments, and managed AWS/VPS infrastructure engineered for high uptime and security.',
   },
   {
     iconName: 'Palette',

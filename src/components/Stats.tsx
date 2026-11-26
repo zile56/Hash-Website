@@ -11,7 +11,7 @@ interface StatItem {
 const STATS_DATA: StatItem[] = [
   { target: 12, suffix: '+', label: 'Projects shipped', detail: 'Production web, mobile & AI apps' },
   { target: 10, suffix: '+', label: 'Clients', detail: 'Founders & scaling teams' },
-  { target: 8, label: 'Core services', detail: 'End-to-end technical capabilities' },
+  { target: 9, label: 'Core services', detail: 'End-to-end technical capabilities' },
   { target: 24, suffix: 'h', label: 'Average response time', detail: 'Direct engineering Slack & calls' },
 ];
 

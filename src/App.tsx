@@ -6,7 +6,6 @@ import { Marquee } from './components/Marquee';
 import { Services } from './components/Services';
 import { Stats } from './components/Stats';
 import { Work } from './components/Work';
-import { Reviews } from './components/Reviews';
 import { Process } from './components/Process';
 import { Industries } from './components/Industries';
 import { About } from './components/About';
@@ -14,16 +13,58 @@ import { Team } from './components/Team';
 import { Careers } from './components/Careers';
 import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
+import { ContactPage } from './components/ContactPage';
+import { BookCallPage } from './components/BookCallPage';
 import { Footer } from './components/Footer';
 import { LogoIntro } from './components/LogoIntro';
 
+function normalizePath(pathname: string): string {
+  const clean = pathname.replace(/\/+$/, '') || '/';
+  if (clean === '/contact' || clean === '/book') return clean;
+  return '/';
+}
+
 export const App: React.FC = () => {
   const [showUp, setShowUp] = useState(false);
+  const [currentPath, setCurrentPath] = useState<string>(() =>
+    typeof window !== 'undefined' ? normalizePath(window.location.pathname) : '/'
+  );
 
   useEffect(() => {
-    const reducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const syncRoute = (e?: Event) => {
+      const nextPath = normalizePath(window.location.pathname);
+      setCurrentPath(nextPath);
 
-    // Frame-batched scroll listener with cached maxScroll (zero layout thrashing)
+      const customHash = (e as CustomEvent<{ hash?: string }> | undefined)?.detail?.hash;
+      const targetHash = customHash ?? window.location.hash.replace(/^#/, '');
+
+      if (nextPath === '/' && targetHash) {
+        requestAnimationFrame(() => {
+          const el = document.getElementById(targetHash);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+    };
+
+    window.addEventListener('popstate', syncRoute);
+    window.addEventListener('hash-route-change', syncRoute);
+
+    return () => {
+      window.removeEventListener('popstate', syncRoute);
+      window.removeEventListener('hash-route-change', syncRoute);
+    };
+  }, []);
+
+  useEffect(() => {
+    const reducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     let scrollFrame = 0;
     let maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     let lastShowUp = false;
@@ -58,11 +99,11 @@ export const App: React.FC = () => {
       queueScrollUpdate();
     };
 
+    updateMaxScroll();
     window.addEventListener('scroll', queueScrollUpdate, { passive: true });
     window.addEventListener('resize', handleResize, { passive: true });
     queueScrollUpdate();
 
-    // Subtle intersection observer for below-the-fold reveals
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -84,7 +125,7 @@ export const App: React.FC = () => {
       if (scrollFrame) cancelAnimationFrame(scrollFrame);
       observer.disconnect();
     };
-  }, []);
+  }, [currentPath]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -94,22 +135,29 @@ export const App: React.FC = () => {
     <div className="site-wrapper">
       <LogoIntro />
       <Background />
-      <Navbar />
+      <Navbar currentPath={currentPath} />
 
       <main>
-        <Hero />
-        <Marquee />
-        <Services />
-        <Stats />
-        <Work />
-        <Reviews />
-        <Process />
-        <Industries />
-        <About />
-        <Team />
-        <Careers />
-        <FAQ />
-        <Contact />
+        {currentPath === '/contact' ? (
+          <ContactPage />
+        ) : currentPath === '/book' ? (
+          <BookCallPage />
+        ) : (
+          <>
+            <Hero />
+            <Marquee />
+            <Services />
+            <Stats />
+            <Work />
+            <Process />
+            <Industries />
+            <About />
+            <Team />
+            <Careers />
+            <FAQ />
+            <Contact />
+          </>
+        )}
       </main>
 
       <Footer />

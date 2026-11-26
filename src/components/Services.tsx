@@ -7,6 +7,7 @@ import {
   Smartphone,
   Layers,
   Server,
+  Cloud,
   Palette,
   Layout,
 } from 'lucide-react';
@@ -19,6 +20,7 @@ const iconMap = {
   Smartphone: Smartphone,
   Layers: Layers,
   Server: Server,
+  Cloud: Cloud,
   Palette: Palette,
   Layout: Layout,
 };

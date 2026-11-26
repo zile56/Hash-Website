@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, Mail, MapPin, Clock, Share2 } from 'lucide-react';
+import { Send, CheckCircle2, Mail, MapPin, Clock } from 'lucide-react';
+import { SocialIcons } from './SocialIcons';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -68,45 +69,14 @@ export const Contact: React.FC = () => {
               </div>
               <div className="contact-meta-content">
                 <span className="contact-meta-label mono">Direct Email</span>
-                <a href="mailto:contact@hash.org" className="contact-email-link">
-                  contact@hash.org
+                <a href="mailto:contact@hashtech.tech" className="contact-email-link">
+                  contact@hashtech.tech
                 </a>
               </div>
             </div>
 
-            <div className="contact-meta-item">
-              <div className="contact-meta-icon">
-                <Share2 size={18} />
-              </div>
-              <div className="contact-meta-content">
-                <span className="contact-meta-label mono">Verified Profiles</span>
-                <div className="contact-social-links">
-                  <a
-                    href="https://www.linkedin.com/company/hash-sw/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-tag mono"
-                  >
-                    LinkedIn @hash-sw
-                  </a>
-                  <a
-                    href="https://github.com/hashconsultants"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-tag mono"
-                  >
-                    GitHub @hashconsultants
-                  </a>
-                  <a
-                    href="https://instagram.com/hashsoftware"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-tag mono"
-                  >
-                    Instagram @hashsoftware
-                  </a>
-                </div>
-              </div>
+            <div className="contact-meta-item contact-social-row">
+              <SocialIcons />
             </div>
           </div>
         </div>
@@ -155,6 +125,7 @@ export const Contact: React.FC = () => {
                 <option value="AI & Automation">AI Agents &amp; Workflow Automation</option>
                 <option value="Data & Analytics">Data Pipelines &amp; Live Dashboards</option>
                 <option value="Full-Stack Engineering">Full-Stack Cloud Engineering</option>
+                <option value="Cloud Services">Cloud Services (AWS / Docker / CI/CD)</option>
                 <option value="Graphics & UI/UX Design">Graphics &amp; UI/UX Design</option>
                 <option value="Digital Marketing & Brand Strategy">Digital Marketing &amp; Brand Strategy</option>
               </select>

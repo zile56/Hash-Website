@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { X, ArrowUpRight, CheckCircle2, Award } from 'lucide-react';
 import { ProjectItem } from '../data/siteData';
 import { ProjectPreview } from './ProjectPreview';
+import { navigateTo } from '../utils/navigation';
 
 interface ProjectModalProps {
   project: ProjectItem | null;
@@ -136,9 +137,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           {/* Modal Action CTA */}
           <div className="modal-footer-actions">
             <a
-              href="#contact"
+              href="/contact"
               className="btn-primary modal-cta-btn"
-              onClick={onClose}
+              onClick={(e) => {
+                onClose();
+                navigateTo('/contact', e);
+              }}
             >
               Discuss a project like this <ArrowUpRight size={16} />
             </a>
