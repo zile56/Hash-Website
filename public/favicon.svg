@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="hashSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4f5f8" />
+      <stop offset="100%" stop-color="#cbd1dc" />
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#07080b" stroke="rgba(255,255,255,0.14)" stroke-width="2" />
+  <path
+    d="M19 16v32M45 16v32M19 32h26"
+    fill="none"
+    stroke="url(#hashSilver)"
+    stroke-width="6.5"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+  />
+</svg>
