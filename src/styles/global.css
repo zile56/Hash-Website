@@ -120,9 +120,7 @@ body.intro-active .brand-logo-sub {
   transition: opacity 0.4s ease 0.1s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
 }
 
-body.intro-active .bg .sh,
-body.intro-active .bg-flow .circuit-runners path,
-body.intro-active .pl {
+body.intro-active .bg .sh {
   animation-play-state: paused !important;
 }
 

@@ -29,6 +29,7 @@ export const Background: React.FC = () => {
     let dpr = 1;
     let nodes: ParticleNode[] = [];
     let raf: number | null = null;
+    let lastTime = 0;
     const mouse = { x: -9999, y: -9999, on: false };
 
     const size = () => {
@@ -45,25 +46,29 @@ export const Background: React.FC = () => {
         nodes.push({
           x: Math.random() * w,
           y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: (Math.random() - 0.5) * 0.12,
           r: Math.random() * 1.6 + 0.8,
         });
       }
     };
 
-    const frame = () => {
+    const frame = (now: number) => {
       if (document.hidden) {
         raf = null;
+        lastTime = 0;
         return;
       }
+      const dt = lastTime ? Math.min((now - lastTime) / 16.667, 2.5) : 1;
+      lastTime = now;
+
       ctx.clearRect(0, 0, w, h);
       const maxD = Math.min(150, Math.max(90, w / 8));
 
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
-        a.x += a.vx;
-        a.y += a.vy;
+        a.x += a.vx * dt;
+        a.y += a.vy * dt;
         if (a.x < -10) a.x = w + 10;
         else if (a.x > w + 10) a.x = -10;
         if (a.y < -10) a.y = h + 10;
@@ -73,8 +78,8 @@ export const Background: React.FC = () => {
           const dy = mouse.y - a.y;
           const d = Math.sqrt(dx * dx + dy * dy);
           if (d < 190) {
-            a.x += dx * 0.0035;
-            a.y += dy * 0.0035;
+            a.x += dx * 0.0014 * dt;
+            a.y += dy * 0.0014 * dt;
           }
         }
       }
