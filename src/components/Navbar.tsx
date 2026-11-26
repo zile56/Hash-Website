@@ -4,7 +4,7 @@ import { navigateTo } from '../utils/navigation';
 
 const NAV_LINKS = [
   { href: '/#services', sectionId: 'services', label: 'Services' },
-  { href: '/#work', sectionId: 'work', label: 'Work' },
+  { href: '/work', sectionId: 'work-page', label: 'Work' },
   { href: '/#about', sectionId: 'about', label: 'About' },
   { href: '/#faq', sectionId: 'faq', label: 'FAQ' },
   { href: '/contact', sectionId: 'contact-page', label: 'Contact' },
@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
   };
 
   const isLinkActive = (link: { href: string; sectionId: string }) => {
-    if (link.href === '/contact') return currentPath === '/contact';
+    if (link.href === '/contact' || link.href === '/work') return currentPath === link.href;
     return currentPath === '/' && activeSection === link.sectionId;
   };
 

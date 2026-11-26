@@ -15,12 +15,13 @@ import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
 import { ContactPage } from './components/ContactPage';
 import { BookCallPage } from './components/BookCallPage';
+import { WorkPage } from './components/WorkPage';
 import { Footer } from './components/Footer';
 import { LogoIntro } from './components/LogoIntro';
 
 function normalizePath(pathname: string): string {
   const clean = pathname.replace(/\/+$/, '') || '/';
-  if (clean === '/contact' || clean === '/book') return clean;
+  if (clean === '/contact' || clean === '/book' || clean === '/work') return clean;
   return '/';
 }
 
@@ -142,6 +143,8 @@ export const App: React.FC = () => {
           <ContactPage />
         ) : currentPath === '/book' ? (
           <BookCallPage />
+        ) : currentPath === '/work' ? (
+          <WorkPage />
         ) : (
           <>
             <Hero />

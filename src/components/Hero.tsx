@@ -100,7 +100,11 @@ export const Hero: React.FC = () => {
           >
             Book a 30-min call <ArrowUpRight size={17} />
           </a>
-          <a className="btn-secondary" href="#work">
+          <a
+            className="btn-secondary"
+            href="/work"
+            onClick={(e) => navigateTo('/work', e)}
+          >
             View our work
           </a>
         </div>

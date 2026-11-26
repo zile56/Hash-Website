@@ -196,7 +196,7 @@ export const BookCallPage: React.FC = () => {
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                  <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '8px', minHeight: '44px' }}>
                     Confirm {selectedDay} · {selectedTime} PKT <ArrowUpRight size={16} />
                   </button>
                 </form>

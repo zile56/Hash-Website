@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { PROJECTS, WORK_FILTERS, ProjectItem } from '../data/siteData';
 import { ProjectModal } from './ProjectModal';
+import { navigateTo } from '../utils/navigation';
 
 export const Work: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('*');
@@ -79,6 +80,16 @@ export const Work: React.FC = () => {
         project={selectedProject}
         onClose={handleCloseModal}
       />
+
+      <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'flex-start' }}>
+        <a
+          href="/work"
+          className="btn-secondary"
+          onClick={(e) => navigateTo('/work', e)}
+        >
+          View all work &amp; case studies <ArrowUpRight size={16} />
+        </a>
+      </div>
     </section>
   );
 };
