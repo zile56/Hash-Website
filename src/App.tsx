@@ -6,6 +6,7 @@ import { Marquee } from './components/Marquee';
 import { Services } from './components/Services';
 import { Stats } from './components/Stats';
 import { Work } from './components/Work';
+import { Reviews } from './components/Reviews';
 import { Process } from './components/Process';
 import { Industries } from './components/Industries';
 import { About } from './components/About';
@@ -22,17 +23,27 @@ export const App: React.FC = () => {
   useEffect(() => {
     const reducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Frame-batched scroll listener for background parallax and scroll-up button
+    // Frame-batched scroll listener with cached maxScroll (zero layout thrashing)
     let scrollFrame = 0;
+    let maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    let lastShowUp = false;
     const bg = document.querySelector('.bg') as HTMLElement | null;
+
+    const updateMaxScroll = () => {
+      maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    };
+
     const updateScroll = () => {
       const y = window.scrollY;
       if (!reducedMotion && bg) {
-        const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-        const progress = Math.min(1, Math.max(0, y / max));
+        const progress = Math.min(1, Math.max(0, y / maxScroll));
         bg.style.setProperty('--p', progress.toFixed(4));
       }
-      setShowUp(y > 600);
+      const shouldShow = y > 600;
+      if (shouldShow !== lastShowUp) {
+        lastShowUp = shouldShow;
+        setShowUp(shouldShow);
+      }
       scrollFrame = 0;
     };
 
@@ -42,8 +53,13 @@ export const App: React.FC = () => {
       }
     };
 
+    const handleResize = () => {
+      updateMaxScroll();
+      queueScrollUpdate();
+    };
+
     window.addEventListener('scroll', queueScrollUpdate, { passive: true });
-    window.addEventListener('resize', queueScrollUpdate, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
     queueScrollUpdate();
 
     // Subtle intersection observer for below-the-fold reveals
@@ -64,7 +80,8 @@ export const App: React.FC = () => {
 
     return () => {
       window.removeEventListener('scroll', queueScrollUpdate);
-      window.removeEventListener('resize', queueScrollUpdate);
+      window.removeEventListener('resize', handleResize);
+      if (scrollFrame) cancelAnimationFrame(scrollFrame);
       observer.disconnect();
     };
   }, []);
@@ -85,6 +102,7 @@ export const App: React.FC = () => {
         <Services />
         <Stats />
         <Work />
+        <Reviews />
         <Process />
         <Industries />
         <About />

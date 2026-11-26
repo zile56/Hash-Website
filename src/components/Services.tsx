@@ -24,11 +24,13 @@ const iconMap = {
 };
 
 export const Services: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const stackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const section = sectionRef.current;
     const stack = stackRef.current;
-    if (!stack) return;
+    if (!section || !stack) return;
 
     const reducedMotion =
       typeof window !== 'undefined' &&
@@ -40,41 +42,53 @@ export const Services: React.FC = () => {
     if (cards.length < 2) return;
 
     let rafId = 0;
+    let isActive = false;
 
     const updateScales = () => {
       rafId = 0;
-      const isDesktop = window.innerWidth >= 768;
-      if (!isDesktop) {
-        for (let i = 0; i < cards.length; i++) {
-          cards[i].style.transform = '';
-        }
-        return;
-      }
-
       const vh = window.innerHeight || 900;
       const startY = vh * 0.82;
       const endY = vh * 0.22;
       const span = Math.max(1, startY - endY);
+      const maxShrink = window.innerWidth >= 768 ? 0.06 : 0.04;
+
+      // Batch all DOM reads before writes to prevent layout thrashing
+      const nextTops: number[] = new Array(cards.length - 1);
+      for (let i = 0; i < cards.length - 1; i++) {
+        nextTops[i] = cards[i + 1].getBoundingClientRect().top;
+      }
 
       for (let i = 0; i < cards.length - 1; i++) {
-        const nextTop = cards[i + 1].getBoundingClientRect().top;
-        const progress = Math.min(1, Math.max(0, (startY - nextTop) / span));
-        const scale = 1 - progress * 0.06;
-        cards[i].style.transform = `scale(${scale.toFixed(4)})`;
+        const progress = Math.min(1, Math.max(0, (startY - nextTops[i]) / span));
+        const scale = 1 - progress * maxShrink;
+        cards[i].style.transform = `translate3d(0, 0, 0) scale(${scale.toFixed(4)})`;
       }
     };
 
     const onScroll = () => {
-      if (!rafId) {
+      if (!rafId && isActive) {
         rafId = requestAnimationFrame(updateScales);
       }
     };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isActive = entries[0].isIntersecting;
+        if (isActive) {
+          window.addEventListener('scroll', onScroll, { passive: true });
+          onScroll();
+        } else {
+          window.removeEventListener('scroll', onScroll);
+        }
+      },
+      { rootMargin: '200px 0px 200px 0px' }
+    );
+
+    observer.observe(section);
     window.addEventListener('resize', onScroll, { passive: true });
-    updateScales();
 
     return () => {
+      observer.disconnect();
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
       if (rafId) cancelAnimationFrame(rafId);
@@ -82,7 +96,7 @@ export const Services: React.FC = () => {
   }, []);
 
   return (
-    <section className="site-section" id="services">
+    <section className="site-section" id="services" ref={sectionRef}>
       <div className="container-wide svc-grid">
         <div className="svc-left">
           <h2 className="section-heading">What we build.</h2>
@@ -104,7 +118,7 @@ export const Services: React.FC = () => {
               <article
                 key={service.title}
                 className={`svc-card ${cardTone}`}
-                style={{ '--t': `${96 + idx * 12}px` } as React.CSSProperties}
+                style={{ '--idx': idx } as React.CSSProperties}
               >
                 <div className="svc-card-top">
                   <div className="svc-card-icon">

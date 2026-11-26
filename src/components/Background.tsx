@@ -32,14 +32,14 @@ export const Background: React.FC = () => {
     const mouse = { x: -9999, y: -9999, on: false };
 
     const size = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const r = canvas.getBoundingClientRect();
       w = r.width;
       h = r.height;
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const n = Math.round(Math.min(72, Math.max(24, w / 22)));
+      const n = Math.round(Math.min(38, Math.max(14, w / 36)));
       nodes = [];
       for (let i = 0; i < n; i++) {
         nodes.push({

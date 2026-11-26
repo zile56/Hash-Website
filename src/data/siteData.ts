@@ -373,8 +373,8 @@ export const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     stepNumber: 5,
-    title: 'Support',
-    desc: 'Ongoing monitoring, feature expansions, and direct access to your engineering team.',
+    title: 'Maintenance',
+    desc: 'Ongoing monitoring, security updates, feature expansions, and direct access to your engineering team.',
   },
 ];
 
@@ -463,7 +463,7 @@ export const FAQS: FAQItem[] = [
     answer: 'You own 100% of your source code, design files, and technical assets. Everything is transferred to your GitHub repositories upon project milestone sign-off.',
   },
   {
-    question: 'Do you provide ongoing support after deployment?',
-    answer: 'Yes. We offer monthly support plans for active infrastructure monitoring, security updates, and continued feature development.',
+    question: 'Do you provide ongoing maintenance after deployment?',
+    answer: 'Yes. We offer monthly maintenance plans for active infrastructure monitoring, security updates, and continued feature development.',
   },
 ];
